@@ -4,6 +4,8 @@ import 'package:qr_scanner_prj/core/colors.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 import 'package:qr_scanner_prj/presentation/widgets/speedometer.dart';
 
+import '../otp_verification/otp_verification_page.dart';
+
 class ConfirmTransferPage extends StatelessWidget {
   const ConfirmTransferPage({Key? key}) : super(key: key);
 
@@ -173,58 +175,22 @@ class ConfirmTransferPage extends StatelessWidget {
                   child: NeumorphicButton(
                     style: const NeumorphicStyle(
                         color: Color.fromRGBO(7, 124, 67, 0.747)),
-                    // boxShape: BoxShape.circle,
-                    // width: 120,
-                    // height: 45,
-                    // // padding: kPadding120,
-                    // backgroundColor: kPrimaryColor,
-                    // bottomRightShadowColor: Colors.transparent,
-                    // topLeftShadowColor: Colors.white,
-                    // topLeftShadowSpreadRadius: 1.0,
-                    // topLeftShadowBlurRadius: 12.0,
-                    // onPressed: (() => Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //         builder: (context) => const OtpVerificationPage(),
-                    //       ),
-                    //     )),
+                    onPressed: (() => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const OtpVerificationPage(),
+                          ),
+                        )),
                     child: const Text(
                       "Pay",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: kPrimaryColor,
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  // child:
-                  // TextButton(
-                  //   onPressed: () {
-                  //     Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (context) => const OtpVerificationPage(),
-                  //       ),
-                  //     );
-                  //   },
-                  //   style: ButtonStyle(
-                  //     backgroundColor:
-                  //         MaterialStateProperty.all<Color>(kBackgroundColor),
-                  //     foregroundColor:
-                  //         MaterialStateProperty.all<Color>(Colors.black),
-                  //     // fixedSize: MaterialStateProperty.all(Size.infinite),
-                  //   ),
-                  //   child: const Text(
-                  //     "Pay",
-                  //     textAlign: TextAlign.center,
-                  //     style: TextStyle(
-                  //       fontSize: 16,
-                  //       fontWeight: FontWeight.bold,
-                  //       color: kPrimaryColor,
-                  //     ),
-                  //   ),
-                  // ),
                 ),
                 kHeight30,
               ],
