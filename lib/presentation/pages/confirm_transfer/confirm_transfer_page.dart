@@ -174,7 +174,7 @@ class ConfirmTransferPage extends StatelessWidget {
                   width: 200,
                   child: NeumorphicButton(
                     style: const NeumorphicStyle(
-                        color: Color.fromRGBO(7, 124, 67, 0.747)),
+                        color: Color.fromRGBO(100, 4, 4, 100)),
                     onPressed: (() => Navigator.push(
                           context,
                           MaterialPageRoute(

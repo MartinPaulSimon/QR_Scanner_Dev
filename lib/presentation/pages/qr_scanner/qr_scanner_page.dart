@@ -61,7 +61,7 @@ class QRScannerPage extends StatelessWidget {
         children: [
           kHeight20,
           Image.asset(
-            'assets/images/QRImage.png',
+            'assets/images/qrcode.png',
             height: 250,
           ),
           kHeight20,

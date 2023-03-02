@@ -34,7 +34,7 @@ class CommonNeumorphicButton extends StatelessWidget {
           label,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            color: Colors.green,
+            color: kBrownColor,
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
