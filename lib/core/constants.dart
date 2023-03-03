@@ -25,8 +25,15 @@ const kHeight30 = SizedBox(height: 30);
 const kHeight40 = SizedBox(height: 40);
 const kHeight50 = SizedBox(height: 50);
 const kHeight70 = SizedBox(height: 70);
+const kHeight80 = SizedBox(height: 80);
 const kHeight90 = SizedBox(height: 90);
+const kHeight100 = SizedBox(height: 100);
 const kHeight120 = SizedBox(height: 120);
+const kHeight180 = SizedBox(height: 180);
+const kHeight300 = SizedBox(height: 300);
+const kHeight350 = SizedBox(height: 350);
+const kHeight400 = SizedBox(height: 400);
+const kHeight500 = SizedBox(height: 500);
 
 //*Padding
 const kPadding10 = EdgeInsets.all(10);
