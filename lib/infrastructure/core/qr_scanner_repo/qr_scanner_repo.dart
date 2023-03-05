@@ -9,8 +9,6 @@ import 'package:http/http.dart' as http;
 import '../api_endpoints.dart';
 
 class QrScannerRepo implements IQrScannerRepo {
-
-  
   // ------------------ getCredit API ------------------------
   @override
   Future<Either<QrScannerFailure, GetCreditModel>> getCreditScoreDetails(
@@ -32,35 +30,29 @@ class QrScannerRepo implements IQrScannerRepo {
     }
   }
 
-
-
 // ----------------- Approve Loan API --------------------
   @override
   Future<Either<QrScannerFailure, ApproveLoanModel>> getLoanApproveDetails(
-      {required String txnId, 
-      required String otp})async {
-        try {
-          Map<String, dynamic> parameters = {
-          "txnid" : txnId,
-          "otp" : otp,
-        };
-        
-        final uri = Uri.http(authority, "/approveloan", parameters);
-        final response = await http.get(uri);
-        if(response.statusCode == 200 || response.statusCode ==201){
-          final models = jsonDecode(response.body);
-          final ApproveLoanModel approveLoanModels = ApproveLoanModel.fromJson(models);
-          return Right(approveLoanModels);
-        }
-        return const Left(QrScannerFailure.serverfailure());
-          
-        } catch (e) {
-          return const Left(QrScannerFailure.clientFailure());
-        }
-        
+      {required String txnId, required String otp}) async {
+    try {
+      Map<String, dynamic> parameters = {
+        "txnid": txnId,
+        "otp": otp,
+      };
+
+      final uri = Uri.http(authority, "/approveloan", parameters);
+      final response = await http.get(uri);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final models = jsonDecode(response.body);
+        final ApproveLoanModel approveLoanModels =
+            ApproveLoanModel.fromJson(models);
+        return Right(approveLoanModels);
+      }
+      return const Left(QrScannerFailure.serverfailure());
+    } catch (e) {
+      return const Left(QrScannerFailure.clientFailure());
+    }
   }
-
-
 
 // -------------- Create Loan API ----------------------
   @override
@@ -85,8 +77,6 @@ class QrScannerRepo implements IQrScannerRepo {
       return const Left(QrScannerFailure.clientFailure());
     }
   }
-
-
 
 // ------------------ create txn [scanned details] api -----------------
   @override
