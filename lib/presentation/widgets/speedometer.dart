@@ -17,12 +17,12 @@ class SpeedoMeterWidget extends StatelessWidget {
             endAngle: 0,
             radiusFactor: 0.8,
             minimum: 0,
-            maximum: 200,
+            maximum: 180,
             axisLineStyle: const AxisLineStyle(),
             pointers: const <GaugePointer>[
               NeedlePointer(
                 knobStyle: KnobStyle(color: Colors.blueGrey, knobRadius: 0.10),
-                value: 120,
+                value: 90,
                 enableAnimation: true,
                 needleColor: Colors.blueGrey,
                 animationType: AnimationType.elasticOut,

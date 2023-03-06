@@ -49,169 +49,174 @@ class ConfirmTransferPage extends StatelessWidget {
         ),
 
         //-------------body---------------
-        body: Column(
-          children: [
-            kHeight20,
-            //Cash Icon, Merchant bank details, etc
-            Image.asset(
-              "assets/images/money.png",
-              height: 100,
-            ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              kHeight20,
+              //Cash Icon, Merchant bank details, etc
+              Image.asset(
+                "assets/images/money.png",
+                height: 100,
+              ),
 
-            kHeight30,
-            //------------CompanyDetails---------
-            BlocBuilder<QrScannerBloc, QrScannerState>(
-              builder: (context, state) {
-                return Column(
+              kHeight30,
+              //------------CompanyDetails---------
+              BlocBuilder<QrScannerBloc, QrScannerState>(
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      Text(
+                        state.merchantAccount,
+                        // "Venus Digital Arcade"
+
+                        style: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        state.customerAccount,
+                        // "5136-1094-8759",
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        state.date,
+                        // "Transfer on Mar 2, 2020",
+                        style: const TextStyle(
+                          color: Colors.yellow,
+                          fontSize: 16,
+                        ),
+                      ),
+                      kHeight50,
+                    ],
+                  );
+                },
+              ),
+
+              //-------AmountField---------------
+
+              Padding(
+                padding: const EdgeInsets.only(right: 50, left: 50),
+                child: TextFormField(
+                  controller:
+                      context.read<QrScannerBloc>().state.amountController,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                  cursorColor: Colors.white,
+                  cursorHeight: 25,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(6),
+                  ],
+                  decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.white30,
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.grey,
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      hintText: "Enter amount",
+                      hintStyle: const TextStyle(
+                        color: Colors.white30,
+                      )),
+                ),
+              ),
+              kHeight50,
+
+              //----------Speedometer, Pay Button Container-------------
+              Container(
+                width: size.width,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
+                  ),
+                  color: Colors.white,
+                ),
+                child: Column(
                   children: [
-                    Text(
-                      state.merchantAccount,
-                      // "Venus Digital Arcade"
+                    //----------SpeedoMeter Widget--------------
+                    const SpeedoMeterWidget(),
 
-                      style: const TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
+                    //------------Terms and Conditions Dialog--------------
+                    Container(
+                      height: size.height / 25,
+                      width: size.width / 1.20,
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 214, 212, 212),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
                       ),
-                    ),
-                    Text(
-                      state.customerAccount,
-                      // "5136-1094-8759",
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      state.date,
-                      // "Transfer on Mar 2, 2020",
-                      style: const TextStyle(
-                        color: Colors.yellow,
-                        fontSize: 16,
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          kWidth20,
+                          Icon(
+                            Icons.check_box_outlined,
+                            color: Colors.green,
+                          ),
+                          kWidth30,
+                          Text(
+                            "Terms and conditions accepted.",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     kHeight50,
-                  ],
-                );
-              },
-            ),
 
-            //-------AmountField---------------
+                    //------------Pay Button-----------------
 
-            Padding(
-              padding: const EdgeInsets.only(right: 50, left: 50),
-              child: TextField(
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-                cursorColor: Colors.white,
-                cursorHeight: 25,
-                keyboardType: TextInputType.number,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(6),
-                ],
-                decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.white30,
-                        width: 3,
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 3,
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    hintText: "Enter amount",
-                    hintStyle: const TextStyle(
-                      color: Colors.white30,
-                    )),
-              ),
-            ),
-            kHeight50,
-
-            //----------Speedometer, Pay Button Container-------------
-            Container(
-              width: size.width,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
-                ),
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  //----------SpeedoMeter Widget--------------
-                  const SpeedoMeterWidget(),
-
-                  //------------Terms and Conditions Dialog--------------
-                  Container(
-                    height: size.height / 25,
-                    width: size.width / 1.20,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 214, 212, 212),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                    ),
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        kWidth20,
-                        Icon(
-                          Icons.check_box_outlined,
-                          color: Colors.green,
-                        ),
-                        kWidth30,
-                        Text(
-                          "Terms and conditions accepted.",
+                    SizedBox(
+                      height: 40,
+                      width: 200,
+                      child: NeumorphicButton(
+                        style: const NeumorphicStyle(
+                            color: Color.fromRGBO(100, 4, 4, 100)),
+                        onPressed: (() => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const OtpVerificationPage(),
+                              ),
+                            )),
+                        child: const Text(
+                          "Pay",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
+                            color: kPrimaryColor,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  kHeight50,
-
-                  //------------Pay Button-----------------
-
-                  SizedBox(
-                    height: 40,
-                    width: 200,
-                    child: NeumorphicButton(
-                      style: const NeumorphicStyle(
-                          color: Color.fromRGBO(100, 4, 4, 100)),
-                      onPressed: (() => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const OtpVerificationPage(),
-                            ),
-                          )),
-                      child: const Text(
-                        "Pay",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                     ),
-                  ),
-                  kHeight30,
-                ],
+                    kHeight30,
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_scanner_prj/core/colors.dart';
 
+import '../../../application/bloc/qr_scanner_bloc.dart';
 import '../../../core/constants.dart';
 import '../../widgets/qr_scanner.dart';
+import '../confirm_transfer/confirm_transfer_page.dart';
 
 class QRScannerPage extends StatelessWidget {
   const QRScannerPage({Key? key}) : super(key: key);
@@ -67,7 +70,20 @@ class QRScannerPage extends StatelessWidget {
           kHeight20,
 
           //------------- QR Code Scanner Widget -----------------------
-          const QRCodeReader(),
+          QRCodeReader(
+            onChanged: (merchant, address) {
+              context
+                  .read<QrScannerBloc>()
+                  .add(QrScannerEvent.getQrScannedDeatils(
+                    merchantAccount: merchant,
+                    customerAccount: address,
+                  ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const ConfirmTransferPage())));
+            },
+          ),
           kHeight20,
 
           //------------ Payment with QR code container-----------------

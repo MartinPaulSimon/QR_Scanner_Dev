@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_scanner_prj/core/colors.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 
+import '../../../application/bloc/qr_scanner_bloc.dart';
 import '../../widgets/common_neumorphic_button.dart';
 import '../../widgets/common_texts.dart';
 import '../../widgets/otp_textfields.dart';
@@ -24,7 +26,7 @@ class OtpVerificationPage extends StatelessWidget {
           ),
           kHeight30,
           commonTexts(
-            label: "14,999",
+            label: context.read<QrScannerBloc>().state.amountController.text,
             color: Colors.yellow,
             fontSize: 22,
             textAlign: TextAlign.center,

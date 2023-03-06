@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -6,45 +5,12 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 import 'package:qr_scanner_prj/presentation/widgets/common_neumorphic_button.dart';
 
-dynamic getResult;
-
 class QRCodeReader extends StatelessWidget {
-  const QRCodeReader({Key? key}) : super(key: key);
+  const QRCodeReader({Key? key, required this.onChanged}) : super(key: key);
 
+  final void Function(String merchant, String address) onChanged;
   @override
   Widget build(BuildContext context) {
-    Future<void> scanQRCode() async {
-      try {
-        final qrCodeFetchedDetails = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666',
-          'Cancel',
-          true,
-          ScanMode.QR,
-        );
-        log(qrCodeFetchedDetails);
-        // if(!mounted) return;
-        getResult = jsonDecode(qrCodeFetchedDetails);
-
-        log(getResult);
-        if (getResult != null) {
-          // context.read<QrScannerBloc>().add(QrScannerEvent.getQrScannedDeatils(
-          //     merchantAccount: state.merchantAccount,
-          //     customerAccount: state.customerAccount,
-          //     date: state.date));
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: ((context) => const ConfirmTransferPage())));
-          log(getResult["merchant"].toString());
-        }
-        log("QRCode_Result:--");
-        // log();
-      } catch (e) {
-        log(e.toString());
-        return;
-      }
-    }
-
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,5 +34,46 @@ class QRCodeReader extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> scanQRCode() async {
+    try {
+      final qrCodeFetchedDetails = await FlutterBarcodeScanner.scanBarcode(
+        '#ff6666',
+        'Cancel',
+        true,
+        ScanMode.QR,
+      );
+      // log(qrCodeFetchedDetails);
+      // if(!mounted) return;
+      // final getResult = jsonDecode(qrCodeFetchedDetails);
+
+      log(qrCodeFetchedDetails);
+
+      final merchant = qrCodeFetchedDetails
+          .split("address:")
+          .first
+          .split("merchant:")
+          .last
+          .replaceAll('"', "");
+
+      final address = qrCodeFetchedDetails
+          .split("address:")
+          .last
+          .replaceAll('"', "")
+          .replaceAll('}', "");
+
+      onChanged(merchant, address);
+
+      // if (getResult) {
+
+      // log(getResult["merchant"].toString());
+      // }
+      log("QRCode_Result:--");
+      // log();
+    } catch (e) {
+      log(e.toString());
+      return;
+    }
   }
 }
