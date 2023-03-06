@@ -16,7 +16,11 @@ class QrScannerState with _$QrScannerState {
     // ---------- getCredit ------------
     required int creditApproved,
     required String creditAvailable,
-
+    required String txnId,
+    required bool isLoading,
+    required Option<Either<QrScannerFailure, GetCreditModel>>
+        getCreditFailureOrSuccess,
+    GetCreditModel? getCreditModel,
   }) = _QrScannerState;
 
   // --------- Initial state -------------------
@@ -27,12 +31,15 @@ class QrScannerState with _$QrScannerState {
       merchantAccount: '',
       customerAccount: '',
       date: '',
+      txnId: '',
       amountController: TextEditingController(),
       getCreateTxnFailureOrSuccess: none(),
+      getCreditFailureOrSuccess: none(),
 
       // --------- getCredit -------------
-    creditApproved: 0,
-    creditAvailable: '',
+      creditApproved: 0,
+      creditAvailable: '',
+      isLoading: false,
     );
   }
 }

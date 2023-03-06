@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:injectable/injectable.dart';
 import 'package:qr_scanner_prj/domain/failures/qr_scanner_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:qr_scanner_prj/domain/i_qr_scanner_repo.dart';
@@ -8,6 +9,7 @@ import 'package:http/http.dart' as http;
 
 import '../api_endpoints.dart';
 
+@injectable
 class QrScannerRepo implements IQrScannerRepo {
   // ------------------ getCredit API ------------------------
   @override

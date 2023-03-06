@@ -36,13 +36,15 @@ dependencies:
   flutter_bloc: ^8.1.2
   flutter_neumorphic: ^3.2.0
   freezed_annotation: ^1.1.0
+  get_it: ^7.2.0
   google_fonts: ^3.0.0
   http: ^0.13.5
+  injectable: ^1.5.3
+  json_annotation: ^4.4.0
   json_serializable: ^6.1.5
   neumorphic_button: ^0.0.1+2
   pinput: ^2.2.21
   syncfusion_flutter_gauges: ^20.4.50
-  json_annotation: ^4.4.0
   typed_data: ^1.3.1
 
 dev_dependencies:
@@ -51,6 +53,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^1.1.1
+  injectable_generator: ^1.5.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

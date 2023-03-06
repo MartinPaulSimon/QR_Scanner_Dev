@@ -9,8 +9,6 @@ class QrScannerEvent with _$QrScannerEvent {
       required String customerAccount}) = _GetQrScannedDeatils;
 
   const factory QrScannerEvent.getCreditDetails({
-     required int creditApproved,
-     required String creditAvailable,
+    required int creditApproved,
   }) = _GetCreditDetails;
-  
 }

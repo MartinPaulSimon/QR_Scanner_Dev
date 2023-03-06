@@ -30,11 +30,9 @@ class _$QrScannerEventTearOff {
     );
   }
 
-  _GetCreditDetails getCreditDetails(
-      {required int creditApproved, required String creditAvailable}) {
+  _GetCreditDetails getCreditDetails({required int creditApproved}) {
     return _GetCreditDetails(
       creditApproved: creditApproved,
-      creditAvailable: creditAvailable,
     );
   }
 }
@@ -49,8 +47,7 @@ mixin _$QrScannerEvent {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved, String creditAvailable)
-        getCreditDetails,
+    required TResult Function(int creditApproved) getCreditDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,8 +55,7 @@ mixin _$QrScannerEvent {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,8 +63,7 @@ mixin _$QrScannerEvent {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -154,8 +149,7 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved, String creditAvailable)
-        getCreditDetails,
+    required TResult Function(int creditApproved) getCreditDetails,
   }) {
     return started();
   }
@@ -166,8 +160,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
   }) {
     return started?.call();
   }
@@ -178,8 +171,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -309,8 +301,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved, String creditAvailable)
-        getCreditDetails,
+    required TResult Function(int creditApproved) getCreditDetails,
   }) {
     return getQrScannedDeatils(merchantAccount, customerAccount);
   }
@@ -321,8 +312,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
   }) {
     return getQrScannedDeatils?.call(merchantAccount, customerAccount);
   }
@@ -333,8 +323,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
     required TResult orElse(),
   }) {
     if (getQrScannedDeatils != null) {
@@ -395,7 +384,7 @@ abstract class _$GetCreditDetailsCopyWith<$Res> {
   factory _$GetCreditDetailsCopyWith(
           _GetCreditDetails value, $Res Function(_GetCreditDetails) then) =
       __$GetCreditDetailsCopyWithImpl<$Res>;
-  $Res call({int creditApproved, String creditAvailable});
+  $Res call({int creditApproved});
 }
 
 /// @nodoc
@@ -412,17 +401,12 @@ class __$GetCreditDetailsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? creditApproved = freezed,
-    Object? creditAvailable = freezed,
   }) {
     return _then(_GetCreditDetails(
       creditApproved: creditApproved == freezed
           ? _value.creditApproved
           : creditApproved // ignore: cast_nullable_to_non_nullable
               as int,
-      creditAvailable: creditAvailable == freezed
-          ? _value.creditAvailable
-          : creditAvailable // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -430,17 +414,14 @@ class __$GetCreditDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GetCreditDetails implements _GetCreditDetails {
-  const _$_GetCreditDetails(
-      {required this.creditApproved, required this.creditAvailable});
+  const _$_GetCreditDetails({required this.creditApproved});
 
   @override
   final int creditApproved;
-  @override
-  final String creditAvailable;
 
   @override
   String toString() {
-    return 'QrScannerEvent.getCreditDetails(creditApproved: $creditApproved, creditAvailable: $creditAvailable)';
+    return 'QrScannerEvent.getCreditDetails(creditApproved: $creditApproved)';
   }
 
   @override
@@ -449,16 +430,12 @@ class _$_GetCreditDetails implements _GetCreditDetails {
         (other.runtimeType == runtimeType &&
             other is _GetCreditDetails &&
             const DeepCollectionEquality()
-                .equals(other.creditApproved, creditApproved) &&
-            const DeepCollectionEquality()
-                .equals(other.creditAvailable, creditAvailable));
+                .equals(other.creditApproved, creditApproved));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(creditApproved),
-      const DeepCollectionEquality().hash(creditAvailable));
+      runtimeType, const DeepCollectionEquality().hash(creditApproved));
 
   @JsonKey(ignore: true)
   @override
@@ -471,10 +448,9 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved, String creditAvailable)
-        getCreditDetails,
+    required TResult Function(int creditApproved) getCreditDetails,
   }) {
-    return getCreditDetails(creditApproved, creditAvailable);
+    return getCreditDetails(creditApproved);
   }
 
   @override
@@ -483,10 +459,9 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
   }) {
-    return getCreditDetails?.call(creditApproved, creditAvailable);
+    return getCreditDetails?.call(creditApproved);
   }
 
   @override
@@ -495,12 +470,11 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved, String creditAvailable)?
-        getCreditDetails,
+    TResult Function(int creditApproved)? getCreditDetails,
     required TResult orElse(),
   }) {
     if (getCreditDetails != null) {
-      return getCreditDetails(creditApproved, creditAvailable);
+      return getCreditDetails(creditApproved);
     }
     return orElse();
   }
@@ -541,12 +515,10 @@ class _$_GetCreditDetails implements _GetCreditDetails {
 }
 
 abstract class _GetCreditDetails implements QrScannerEvent {
-  const factory _GetCreditDetails(
-      {required int creditApproved,
-      required String creditAvailable}) = _$_GetCreditDetails;
+  const factory _GetCreditDetails({required int creditApproved}) =
+      _$_GetCreditDetails;
 
   int get creditApproved;
-  String get creditAvailable;
   @JsonKey(ignore: true)
   _$GetCreditDetailsCopyWith<_GetCreditDetails> get copyWith =>
       throw _privateConstructorUsedError;
@@ -566,7 +538,12 @@ class _$QrScannerStateTearOff {
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
       required int creditApproved,
-      required String creditAvailable}) {
+      required String creditAvailable,
+      required String txnId,
+      required bool isLoading,
+      required Option<Either<QrScannerFailure, GetCreditModel>>
+          getCreditFailureOrSuccess,
+      GetCreditModel? getCreditModel}) {
     return _QrScannerState(
       merchantAccount: merchantAccount,
       customerAccount: customerAccount,
@@ -577,6 +554,10 @@ class _$QrScannerStateTearOff {
       createTranscationModel: createTranscationModel,
       creditApproved: creditApproved,
       creditAvailable: creditAvailable,
+      txnId: txnId,
+      isLoading: isLoading,
+      getCreditFailureOrSuccess: getCreditFailureOrSuccess,
+      getCreditModel: getCreditModel,
     );
   }
 }
@@ -599,6 +580,11 @@ mixin _$QrScannerState {
       throw _privateConstructorUsedError; // ---------- getCredit ------------
   int get creditApproved => throw _privateConstructorUsedError;
   String get creditAvailable => throw _privateConstructorUsedError;
+  String get txnId => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  Option<Either<QrScannerFailure, GetCreditModel>>
+      get getCreditFailureOrSuccess => throw _privateConstructorUsedError;
+  GetCreditModel? get getCreditModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QrScannerStateCopyWith<QrScannerState> get copyWith =>
@@ -620,9 +606,15 @@ abstract class $QrScannerStateCopyWith<$Res> {
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
       int creditApproved,
-      String creditAvailable});
+      String creditAvailable,
+      String txnId,
+      bool isLoading,
+      Option<Either<QrScannerFailure, GetCreditModel>>
+          getCreditFailureOrSuccess,
+      GetCreditModel? getCreditModel});
 
   $CreateTranscationModelCopyWith<$Res>? get createTranscationModel;
+  $GetCreditModelCopyWith<$Res>? get getCreditModel;
 }
 
 /// @nodoc
@@ -645,6 +637,10 @@ class _$QrScannerStateCopyWithImpl<$Res>
     Object? createTranscationModel = freezed,
     Object? creditApproved = freezed,
     Object? creditAvailable = freezed,
+    Object? txnId = freezed,
+    Object? isLoading = freezed,
+    Object? getCreditFailureOrSuccess = freezed,
+    Object? getCreditModel = freezed,
   }) {
     return _then(_value.copyWith(
       merchantAccount: merchantAccount == freezed
@@ -683,6 +679,22 @@ class _$QrScannerStateCopyWithImpl<$Res>
           ? _value.creditAvailable
           : creditAvailable // ignore: cast_nullable_to_non_nullable
               as String,
+      txnId: txnId == freezed
+          ? _value.txnId
+          : txnId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      getCreditFailureOrSuccess: getCreditFailureOrSuccess == freezed
+          ? _value.getCreditFailureOrSuccess
+          : getCreditFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<QrScannerFailure, GetCreditModel>>,
+      getCreditModel: getCreditModel == freezed
+          ? _value.getCreditModel
+          : getCreditModel // ignore: cast_nullable_to_non_nullable
+              as GetCreditModel?,
     ));
   }
 
@@ -695,6 +707,17 @@ class _$QrScannerStateCopyWithImpl<$Res>
     return $CreateTranscationModelCopyWith<$Res>(_value.createTranscationModel!,
         (value) {
       return _then(_value.copyWith(createTranscationModel: value));
+    });
+  }
+
+  @override
+  $GetCreditModelCopyWith<$Res>? get getCreditModel {
+    if (_value.getCreditModel == null) {
+      return null;
+    }
+
+    return $GetCreditModelCopyWith<$Res>(_value.getCreditModel!, (value) {
+      return _then(_value.copyWith(getCreditModel: value));
     });
   }
 }
@@ -716,10 +739,17 @@ abstract class _$QrScannerStateCopyWith<$Res>
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
       int creditApproved,
-      String creditAvailable});
+      String creditAvailable,
+      String txnId,
+      bool isLoading,
+      Option<Either<QrScannerFailure, GetCreditModel>>
+          getCreditFailureOrSuccess,
+      GetCreditModel? getCreditModel});
 
   @override
   $CreateTranscationModelCopyWith<$Res>? get createTranscationModel;
+  @override
+  $GetCreditModelCopyWith<$Res>? get getCreditModel;
 }
 
 /// @nodoc
@@ -744,6 +774,10 @@ class __$QrScannerStateCopyWithImpl<$Res>
     Object? createTranscationModel = freezed,
     Object? creditApproved = freezed,
     Object? creditAvailable = freezed,
+    Object? txnId = freezed,
+    Object? isLoading = freezed,
+    Object? getCreditFailureOrSuccess = freezed,
+    Object? getCreditModel = freezed,
   }) {
     return _then(_QrScannerState(
       merchantAccount: merchantAccount == freezed
@@ -782,6 +816,22 @@ class __$QrScannerStateCopyWithImpl<$Res>
           ? _value.creditAvailable
           : creditAvailable // ignore: cast_nullable_to_non_nullable
               as String,
+      txnId: txnId == freezed
+          ? _value.txnId
+          : txnId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      getCreditFailureOrSuccess: getCreditFailureOrSuccess == freezed
+          ? _value.getCreditFailureOrSuccess
+          : getCreditFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<QrScannerFailure, GetCreditModel>>,
+      getCreditModel: getCreditModel == freezed
+          ? _value.getCreditModel
+          : getCreditModel // ignore: cast_nullable_to_non_nullable
+              as GetCreditModel?,
     ));
   }
 }
@@ -798,7 +848,11 @@ class _$_QrScannerState implements _QrScannerState {
       required this.getCreateTxnFailureOrSuccess,
       this.createTranscationModel,
       required this.creditApproved,
-      required this.creditAvailable});
+      required this.creditAvailable,
+      required this.txnId,
+      required this.isLoading,
+      required this.getCreditFailureOrSuccess,
+      this.getCreditModel});
 
   @override // --------- createTxn -----------
   final String merchantAccount;
@@ -819,10 +873,19 @@ class _$_QrScannerState implements _QrScannerState {
   final int creditApproved;
   @override
   final String creditAvailable;
+  @override
+  final String txnId;
+  @override
+  final bool isLoading;
+  @override
+  final Option<Either<QrScannerFailure, GetCreditModel>>
+      getCreditFailureOrSuccess;
+  @override
+  final GetCreditModel? getCreditModel;
 
   @override
   String toString() {
-    return 'QrScannerState(merchantAccount: $merchantAccount, customerAccount: $customerAccount, date: $date, getScannedDetails: $getScannedDetails, amountController: $amountController, getCreateTxnFailureOrSuccess: $getCreateTxnFailureOrSuccess, createTranscationModel: $createTranscationModel, creditApproved: $creditApproved, creditAvailable: $creditAvailable)';
+    return 'QrScannerState(merchantAccount: $merchantAccount, customerAccount: $customerAccount, date: $date, getScannedDetails: $getScannedDetails, amountController: $amountController, getCreateTxnFailureOrSuccess: $getCreateTxnFailureOrSuccess, createTranscationModel: $createTranscationModel, creditApproved: $creditApproved, creditAvailable: $creditAvailable, txnId: $txnId, isLoading: $isLoading, getCreditFailureOrSuccess: $getCreditFailureOrSuccess, getCreditModel: $getCreditModel)';
   }
 
   @override
@@ -847,7 +910,13 @@ class _$_QrScannerState implements _QrScannerState {
             const DeepCollectionEquality()
                 .equals(other.creditApproved, creditApproved) &&
             const DeepCollectionEquality()
-                .equals(other.creditAvailable, creditAvailable));
+                .equals(other.creditAvailable, creditAvailable) &&
+            const DeepCollectionEquality().equals(other.txnId, txnId) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(
+                other.getCreditFailureOrSuccess, getCreditFailureOrSuccess) &&
+            const DeepCollectionEquality()
+                .equals(other.getCreditModel, getCreditModel));
   }
 
   @override
@@ -861,7 +930,11 @@ class _$_QrScannerState implements _QrScannerState {
       const DeepCollectionEquality().hash(getCreateTxnFailureOrSuccess),
       const DeepCollectionEquality().hash(createTranscationModel),
       const DeepCollectionEquality().hash(creditApproved),
-      const DeepCollectionEquality().hash(creditAvailable));
+      const DeepCollectionEquality().hash(creditAvailable),
+      const DeepCollectionEquality().hash(txnId),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(getCreditFailureOrSuccess),
+      const DeepCollectionEquality().hash(getCreditModel));
 
   @JsonKey(ignore: true)
   @override
@@ -880,7 +953,12 @@ abstract class _QrScannerState implements QrScannerState {
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
       required int creditApproved,
-      required String creditAvailable}) = _$_QrScannerState;
+      required String creditAvailable,
+      required String txnId,
+      required bool isLoading,
+      required Option<Either<QrScannerFailure, GetCreditModel>>
+          getCreditFailureOrSuccess,
+      GetCreditModel? getCreditModel}) = _$_QrScannerState;
 
   @override // --------- createTxn -----------
   String get merchantAccount;
@@ -901,6 +979,15 @@ abstract class _QrScannerState implements QrScannerState {
   int get creditApproved;
   @override
   String get creditAvailable;
+  @override
+  String get txnId;
+  @override
+  bool get isLoading;
+  @override
+  Option<Either<QrScannerFailure, GetCreditModel>>
+      get getCreditFailureOrSuccess;
+  @override
+  GetCreditModel? get getCreditModel;
   @override
   @JsonKey(ignore: true)
   _$QrScannerStateCopyWith<_QrScannerState> get copyWith =>

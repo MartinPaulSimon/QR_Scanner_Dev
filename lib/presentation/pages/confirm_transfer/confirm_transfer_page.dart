@@ -100,40 +100,47 @@ class ConfirmTransferPage extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.only(right: 50, left: 50),
-                child: TextFormField(
-                  controller:
-                      context.read<QrScannerBloc>().state.amountController,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                  cursorColor: Colors.white,
-                  cursorHeight: 25,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(6),
-                  ],
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.white30,
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
+                child: BlocBuilder<QrScannerBloc, QrScannerState>(
+                  builder: (context, state) {
+                    return TextFormField(
+                      // onChanged: context.read<QrScannerBloc>().add(
+                      //     QrScannerEvent.getCreditDetails(
+                      //         creditApproved: state.creditApproved)),
+                      controller:
+                          context.read<QrScannerBloc>().state.amountController,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.grey,
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      hintText: "Enter amount",
-                      hintStyle: const TextStyle(
-                        color: Colors.white30,
-                      )),
+                      cursorColor: Colors.white,
+                      cursorHeight: 25,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(6),
+                      ],
+                      decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.white30,
+                              width: 3,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.grey,
+                              width: 3,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: "Enter amount",
+                          hintStyle: const TextStyle(
+                            color: Colors.white30,
+                          )),
+                    );
+                  },
                 ),
               ),
               kHeight50,
