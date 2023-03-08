@@ -30,9 +30,33 @@ class _$QrScannerEventTearOff {
     );
   }
 
-  _GetCreditDetails getCreditDetails({required int creditApproved}) {
+  _GetCreditDetails getCreditDetails({required String txnNo}) {
     return _GetCreditDetails(
-      creditApproved: creditApproved,
+      txnNo: txnNo,
+    );
+  }
+
+  _IsPaymentEligible isPaymentEligible(
+      {required double amount, required String txnId}) {
+    return _IsPaymentEligible(
+      amount: amount,
+      txnId: txnId,
+    );
+  }
+
+  _OtpVerification otpVerification(
+      {required String merchantAccount, required String customerAccount}) {
+    return _OtpVerification(
+      merchantAccount: merchantAccount,
+      customerAccount: customerAccount,
+    );
+  }
+
+  _ApproveLoanWithOtp approveLoanWithOtp(
+      {required String txnId, required int otp}) {
+    return _ApproveLoanWithOtp(
+      txnId: txnId,
+      otp: otp,
     );
   }
 }
@@ -47,7 +71,11 @@ mixin _$QrScannerEvent {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved) getCreditDetails,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +83,11 @@ mixin _$QrScannerEvent {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +95,11 @@ mixin _$QrScannerEvent {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +108,9 @@ mixin _$QrScannerEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
     required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +118,9 @@ mixin _$QrScannerEvent {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +128,9 @@ mixin _$QrScannerEvent {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -149,7 +194,11 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved) getCreditDetails,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
   }) {
     return started();
   }
@@ -160,7 +209,11 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
   }) {
     return started?.call();
   }
@@ -171,7 +224,11 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -186,6 +243,9 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
     required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
   }) {
     return started(this);
   }
@@ -196,6 +256,9 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
   }) {
     return started?.call(this);
   }
@@ -206,6 +269,9 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -301,7 +367,11 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved) getCreditDetails,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
   }) {
     return getQrScannedDeatils(merchantAccount, customerAccount);
   }
@@ -312,7 +382,11 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
   }) {
     return getQrScannedDeatils?.call(merchantAccount, customerAccount);
   }
@@ -323,7 +397,11 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
     required TResult orElse(),
   }) {
     if (getQrScannedDeatils != null) {
@@ -338,6 +416,9 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     required TResult Function(_Started value) started,
     required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
     required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
   }) {
     return getQrScannedDeatils(this);
   }
@@ -348,6 +429,9 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
   }) {
     return getQrScannedDeatils?.call(this);
   }
@@ -358,6 +442,9 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     required TResult orElse(),
   }) {
     if (getQrScannedDeatils != null) {
@@ -384,7 +471,7 @@ abstract class _$GetCreditDetailsCopyWith<$Res> {
   factory _$GetCreditDetailsCopyWith(
           _GetCreditDetails value, $Res Function(_GetCreditDetails) then) =
       __$GetCreditDetailsCopyWithImpl<$Res>;
-  $Res call({int creditApproved});
+  $Res call({String txnNo});
 }
 
 /// @nodoc
@@ -400,13 +487,13 @@ class __$GetCreditDetailsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? creditApproved = freezed,
+    Object? txnNo = freezed,
   }) {
     return _then(_GetCreditDetails(
-      creditApproved: creditApproved == freezed
-          ? _value.creditApproved
-          : creditApproved // ignore: cast_nullable_to_non_nullable
-              as int,
+      txnNo: txnNo == freezed
+          ? _value.txnNo
+          : txnNo // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -414,14 +501,14 @@ class __$GetCreditDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GetCreditDetails implements _GetCreditDetails {
-  const _$_GetCreditDetails({required this.creditApproved});
+  const _$_GetCreditDetails({required this.txnNo});
 
   @override
-  final int creditApproved;
+  final String txnNo;
 
   @override
   String toString() {
-    return 'QrScannerEvent.getCreditDetails(creditApproved: $creditApproved)';
+    return 'QrScannerEvent.getCreditDetails(txnNo: $txnNo)';
   }
 
   @override
@@ -429,13 +516,12 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GetCreditDetails &&
-            const DeepCollectionEquality()
-                .equals(other.creditApproved, creditApproved));
+            const DeepCollectionEquality().equals(other.txnNo, txnNo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(creditApproved));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(txnNo));
 
   @JsonKey(ignore: true)
   @override
@@ -448,9 +534,13 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     required TResult Function() started,
     required TResult Function(String merchantAccount, String customerAccount)
         getQrScannedDeatils,
-    required TResult Function(int creditApproved) getCreditDetails,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
   }) {
-    return getCreditDetails(creditApproved);
+    return getCreditDetails(txnNo);
   }
 
   @override
@@ -459,9 +549,13 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
   }) {
-    return getCreditDetails?.call(creditApproved);
+    return getCreditDetails?.call(txnNo);
   }
 
   @override
@@ -470,11 +564,15 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function()? started,
     TResult Function(String merchantAccount, String customerAccount)?
         getQrScannedDeatils,
-    TResult Function(int creditApproved)? getCreditDetails,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
     required TResult orElse(),
   }) {
     if (getCreditDetails != null) {
-      return getCreditDetails(creditApproved);
+      return getCreditDetails(txnNo);
     }
     return orElse();
   }
@@ -485,6 +583,9 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     required TResult Function(_Started value) started,
     required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
     required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
   }) {
     return getCreditDetails(this);
   }
@@ -495,6 +596,9 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
   }) {
     return getCreditDetails?.call(this);
   }
@@ -505,6 +609,9 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function(_Started value)? started,
     TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
     TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     required TResult orElse(),
   }) {
     if (getCreditDetails != null) {
@@ -515,12 +622,544 @@ class _$_GetCreditDetails implements _GetCreditDetails {
 }
 
 abstract class _GetCreditDetails implements QrScannerEvent {
-  const factory _GetCreditDetails({required int creditApproved}) =
+  const factory _GetCreditDetails({required String txnNo}) =
       _$_GetCreditDetails;
 
-  int get creditApproved;
+  String get txnNo;
   @JsonKey(ignore: true)
   _$GetCreditDetailsCopyWith<_GetCreditDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$IsPaymentEligibleCopyWith<$Res> {
+  factory _$IsPaymentEligibleCopyWith(
+          _IsPaymentEligible value, $Res Function(_IsPaymentEligible) then) =
+      __$IsPaymentEligibleCopyWithImpl<$Res>;
+  $Res call({double amount, String txnId});
+}
+
+/// @nodoc
+class __$IsPaymentEligibleCopyWithImpl<$Res>
+    extends _$QrScannerEventCopyWithImpl<$Res>
+    implements _$IsPaymentEligibleCopyWith<$Res> {
+  __$IsPaymentEligibleCopyWithImpl(
+      _IsPaymentEligible _value, $Res Function(_IsPaymentEligible) _then)
+      : super(_value, (v) => _then(v as _IsPaymentEligible));
+
+  @override
+  _IsPaymentEligible get _value => super._value as _IsPaymentEligible;
+
+  @override
+  $Res call({
+    Object? amount = freezed,
+    Object? txnId = freezed,
+  }) {
+    return _then(_IsPaymentEligible(
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      txnId: txnId == freezed
+          ? _value.txnId
+          : txnId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_IsPaymentEligible implements _IsPaymentEligible {
+  const _$_IsPaymentEligible({required this.amount, required this.txnId});
+
+  @override
+  final double amount;
+  @override
+  final String txnId;
+
+  @override
+  String toString() {
+    return 'QrScannerEvent.isPaymentEligible(amount: $amount, txnId: $txnId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IsPaymentEligible &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality().equals(other.txnId, txnId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(txnId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$IsPaymentEligibleCopyWith<_IsPaymentEligible> get copyWith =>
+      __$IsPaymentEligibleCopyWithImpl<_IsPaymentEligible>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String merchantAccount, String customerAccount)
+        getQrScannedDeatils,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
+  }) {
+    return isPaymentEligible(amount, txnId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+  }) {
+    return isPaymentEligible?.call(amount, txnId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+    required TResult orElse(),
+  }) {
+    if (isPaymentEligible != null) {
+      return isPaymentEligible(amount, txnId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
+    required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
+  }) {
+    return isPaymentEligible(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+  }) {
+    return isPaymentEligible?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+    required TResult orElse(),
+  }) {
+    if (isPaymentEligible != null) {
+      return isPaymentEligible(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsPaymentEligible implements QrScannerEvent {
+  const factory _IsPaymentEligible(
+      {required double amount, required String txnId}) = _$_IsPaymentEligible;
+
+  double get amount;
+  String get txnId;
+  @JsonKey(ignore: true)
+  _$IsPaymentEligibleCopyWith<_IsPaymentEligible> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OtpVerificationCopyWith<$Res> {
+  factory _$OtpVerificationCopyWith(
+          _OtpVerification value, $Res Function(_OtpVerification) then) =
+      __$OtpVerificationCopyWithImpl<$Res>;
+  $Res call({String merchantAccount, String customerAccount});
+}
+
+/// @nodoc
+class __$OtpVerificationCopyWithImpl<$Res>
+    extends _$QrScannerEventCopyWithImpl<$Res>
+    implements _$OtpVerificationCopyWith<$Res> {
+  __$OtpVerificationCopyWithImpl(
+      _OtpVerification _value, $Res Function(_OtpVerification) _then)
+      : super(_value, (v) => _then(v as _OtpVerification));
+
+  @override
+  _OtpVerification get _value => super._value as _OtpVerification;
+
+  @override
+  $Res call({
+    Object? merchantAccount = freezed,
+    Object? customerAccount = freezed,
+  }) {
+    return _then(_OtpVerification(
+      merchantAccount: merchantAccount == freezed
+          ? _value.merchantAccount
+          : merchantAccount // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerAccount: customerAccount == freezed
+          ? _value.customerAccount
+          : customerAccount // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OtpVerification implements _OtpVerification {
+  const _$_OtpVerification(
+      {required this.merchantAccount, required this.customerAccount});
+
+  @override
+  final String merchantAccount;
+  @override
+  final String customerAccount;
+
+  @override
+  String toString() {
+    return 'QrScannerEvent.otpVerification(merchantAccount: $merchantAccount, customerAccount: $customerAccount)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OtpVerification &&
+            const DeepCollectionEquality()
+                .equals(other.merchantAccount, merchantAccount) &&
+            const DeepCollectionEquality()
+                .equals(other.customerAccount, customerAccount));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(merchantAccount),
+      const DeepCollectionEquality().hash(customerAccount));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OtpVerificationCopyWith<_OtpVerification> get copyWith =>
+      __$OtpVerificationCopyWithImpl<_OtpVerification>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String merchantAccount, String customerAccount)
+        getQrScannedDeatils,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
+  }) {
+    return otpVerification(merchantAccount, customerAccount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+  }) {
+    return otpVerification?.call(merchantAccount, customerAccount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+    required TResult orElse(),
+  }) {
+    if (otpVerification != null) {
+      return otpVerification(merchantAccount, customerAccount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
+    required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
+  }) {
+    return otpVerification(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+  }) {
+    return otpVerification?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+    required TResult orElse(),
+  }) {
+    if (otpVerification != null) {
+      return otpVerification(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OtpVerification implements QrScannerEvent {
+  const factory _OtpVerification(
+      {required String merchantAccount,
+      required String customerAccount}) = _$_OtpVerification;
+
+  String get merchantAccount;
+  String get customerAccount;
+  @JsonKey(ignore: true)
+  _$OtpVerificationCopyWith<_OtpVerification> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ApproveLoanWithOtpCopyWith<$Res> {
+  factory _$ApproveLoanWithOtpCopyWith(
+          _ApproveLoanWithOtp value, $Res Function(_ApproveLoanWithOtp) then) =
+      __$ApproveLoanWithOtpCopyWithImpl<$Res>;
+  $Res call({String txnId, int otp});
+}
+
+/// @nodoc
+class __$ApproveLoanWithOtpCopyWithImpl<$Res>
+    extends _$QrScannerEventCopyWithImpl<$Res>
+    implements _$ApproveLoanWithOtpCopyWith<$Res> {
+  __$ApproveLoanWithOtpCopyWithImpl(
+      _ApproveLoanWithOtp _value, $Res Function(_ApproveLoanWithOtp) _then)
+      : super(_value, (v) => _then(v as _ApproveLoanWithOtp));
+
+  @override
+  _ApproveLoanWithOtp get _value => super._value as _ApproveLoanWithOtp;
+
+  @override
+  $Res call({
+    Object? txnId = freezed,
+    Object? otp = freezed,
+  }) {
+    return _then(_ApproveLoanWithOtp(
+      txnId: txnId == freezed
+          ? _value.txnId
+          : txnId // ignore: cast_nullable_to_non_nullable
+              as String,
+      otp: otp == freezed
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ApproveLoanWithOtp implements _ApproveLoanWithOtp {
+  const _$_ApproveLoanWithOtp({required this.txnId, required this.otp});
+
+  @override
+  final String txnId;
+  @override
+  final int otp;
+
+  @override
+  String toString() {
+    return 'QrScannerEvent.approveLoanWithOtp(txnId: $txnId, otp: $otp)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ApproveLoanWithOtp &&
+            const DeepCollectionEquality().equals(other.txnId, txnId) &&
+            const DeepCollectionEquality().equals(other.otp, otp));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(txnId),
+      const DeepCollectionEquality().hash(otp));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ApproveLoanWithOtpCopyWith<_ApproveLoanWithOtp> get copyWith =>
+      __$ApproveLoanWithOtpCopyWithImpl<_ApproveLoanWithOtp>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String merchantAccount, String customerAccount)
+        getQrScannedDeatils,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
+  }) {
+    return approveLoanWithOtp(txnId, otp);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+  }) {
+    return approveLoanWithOtp?.call(txnId, otp);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+    required TResult orElse(),
+  }) {
+    if (approveLoanWithOtp != null) {
+      return approveLoanWithOtp(txnId, otp);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
+    required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
+  }) {
+    return approveLoanWithOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+  }) {
+    return approveLoanWithOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+    required TResult orElse(),
+  }) {
+    if (approveLoanWithOtp != null) {
+      return approveLoanWithOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ApproveLoanWithOtp implements QrScannerEvent {
+  const factory _ApproveLoanWithOtp({required String txnId, required int otp}) =
+      _$_ApproveLoanWithOtp;
+
+  String get txnId;
+  int get otp;
+  @JsonKey(ignore: true)
+  _$ApproveLoanWithOtpCopyWith<_ApproveLoanWithOtp> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -533,31 +1172,36 @@ class _$QrScannerStateTearOff {
       required String customerAccount,
       required String date,
       required String getScannedDetails,
+      required String otpMobileNumber,
       required TextEditingController amountController,
       required Option<Either<QrScannerFailure, CreateTranscationModel>>
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
-      required int creditApproved,
       required String creditAvailable,
       required String txnId,
       required bool isLoading,
       required Option<Either<QrScannerFailure, GetCreditModel>>
           getCreditFailureOrSuccess,
-      GetCreditModel? getCreditModel}) {
+      GetCreditModel? getCreditModel,
+      required Option<Either<QrScannerFailure, CreateLoanModel>>
+          getCreateLoanFailureOrSuccess,
+      CreateLoanModel? createLoanModel}) {
     return _QrScannerState(
       merchantAccount: merchantAccount,
       customerAccount: customerAccount,
       date: date,
       getScannedDetails: getScannedDetails,
+      otpMobileNumber: otpMobileNumber,
       amountController: amountController,
       getCreateTxnFailureOrSuccess: getCreateTxnFailureOrSuccess,
       createTranscationModel: createTranscationModel,
-      creditApproved: creditApproved,
       creditAvailable: creditAvailable,
       txnId: txnId,
       isLoading: isLoading,
       getCreditFailureOrSuccess: getCreditFailureOrSuccess,
       getCreditModel: getCreditModel,
+      getCreateLoanFailureOrSuccess: getCreateLoanFailureOrSuccess,
+      createLoanModel: createLoanModel,
     );
   }
 }
@@ -572,19 +1216,24 @@ mixin _$QrScannerState {
   String get customerAccount => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
   String get getScannedDetails => throw _privateConstructorUsedError;
+  String get otpMobileNumber => throw _privateConstructorUsedError;
   TextEditingController get amountController =>
       throw _privateConstructorUsedError;
   Option<Either<QrScannerFailure, CreateTranscationModel>>
       get getCreateTxnFailureOrSuccess => throw _privateConstructorUsedError;
   CreateTranscationModel? get createTranscationModel =>
       throw _privateConstructorUsedError; // ---------- getCredit ------------
-  int get creditApproved => throw _privateConstructorUsedError;
+// required int creditApproved,
   String get creditAvailable => throw _privateConstructorUsedError;
   String get txnId => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<QrScannerFailure, GetCreditModel>>
       get getCreditFailureOrSuccess => throw _privateConstructorUsedError;
-  GetCreditModel? get getCreditModel => throw _privateConstructorUsedError;
+  GetCreditModel? get getCreditModel =>
+      throw _privateConstructorUsedError; // --------- createLoan -------------
+  Option<Either<QrScannerFailure, CreateLoanModel>>
+      get getCreateLoanFailureOrSuccess => throw _privateConstructorUsedError;
+  CreateLoanModel? get createLoanModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QrScannerStateCopyWith<QrScannerState> get copyWith =>
@@ -601,20 +1250,24 @@ abstract class $QrScannerStateCopyWith<$Res> {
       String customerAccount,
       String date,
       String getScannedDetails,
+      String otpMobileNumber,
       TextEditingController amountController,
       Option<Either<QrScannerFailure, CreateTranscationModel>>
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
-      int creditApproved,
       String creditAvailable,
       String txnId,
       bool isLoading,
       Option<Either<QrScannerFailure, GetCreditModel>>
           getCreditFailureOrSuccess,
-      GetCreditModel? getCreditModel});
+      GetCreditModel? getCreditModel,
+      Option<Either<QrScannerFailure, CreateLoanModel>>
+          getCreateLoanFailureOrSuccess,
+      CreateLoanModel? createLoanModel});
 
   $CreateTranscationModelCopyWith<$Res>? get createTranscationModel;
   $GetCreditModelCopyWith<$Res>? get getCreditModel;
+  $CreateLoanModelCopyWith<$Res>? get createLoanModel;
 }
 
 /// @nodoc
@@ -632,15 +1285,17 @@ class _$QrScannerStateCopyWithImpl<$Res>
     Object? customerAccount = freezed,
     Object? date = freezed,
     Object? getScannedDetails = freezed,
+    Object? otpMobileNumber = freezed,
     Object? amountController = freezed,
     Object? getCreateTxnFailureOrSuccess = freezed,
     Object? createTranscationModel = freezed,
-    Object? creditApproved = freezed,
     Object? creditAvailable = freezed,
     Object? txnId = freezed,
     Object? isLoading = freezed,
     Object? getCreditFailureOrSuccess = freezed,
     Object? getCreditModel = freezed,
+    Object? getCreateLoanFailureOrSuccess = freezed,
+    Object? createLoanModel = freezed,
   }) {
     return _then(_value.copyWith(
       merchantAccount: merchantAccount == freezed
@@ -659,6 +1314,10 @@ class _$QrScannerStateCopyWithImpl<$Res>
           ? _value.getScannedDetails
           : getScannedDetails // ignore: cast_nullable_to_non_nullable
               as String,
+      otpMobileNumber: otpMobileNumber == freezed
+          ? _value.otpMobileNumber
+          : otpMobileNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       amountController: amountController == freezed
           ? _value.amountController
           : amountController // ignore: cast_nullable_to_non_nullable
@@ -671,10 +1330,6 @@ class _$QrScannerStateCopyWithImpl<$Res>
           ? _value.createTranscationModel
           : createTranscationModel // ignore: cast_nullable_to_non_nullable
               as CreateTranscationModel?,
-      creditApproved: creditApproved == freezed
-          ? _value.creditApproved
-          : creditApproved // ignore: cast_nullable_to_non_nullable
-              as int,
       creditAvailable: creditAvailable == freezed
           ? _value.creditAvailable
           : creditAvailable // ignore: cast_nullable_to_non_nullable
@@ -695,6 +1350,14 @@ class _$QrScannerStateCopyWithImpl<$Res>
           ? _value.getCreditModel
           : getCreditModel // ignore: cast_nullable_to_non_nullable
               as GetCreditModel?,
+      getCreateLoanFailureOrSuccess: getCreateLoanFailureOrSuccess == freezed
+          ? _value.getCreateLoanFailureOrSuccess
+          : getCreateLoanFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<QrScannerFailure, CreateLoanModel>>,
+      createLoanModel: createLoanModel == freezed
+          ? _value.createLoanModel
+          : createLoanModel // ignore: cast_nullable_to_non_nullable
+              as CreateLoanModel?,
     ));
   }
 
@@ -720,6 +1383,17 @@ class _$QrScannerStateCopyWithImpl<$Res>
       return _then(_value.copyWith(getCreditModel: value));
     });
   }
+
+  @override
+  $CreateLoanModelCopyWith<$Res>? get createLoanModel {
+    if (_value.createLoanModel == null) {
+      return null;
+    }
+
+    return $CreateLoanModelCopyWith<$Res>(_value.createLoanModel!, (value) {
+      return _then(_value.copyWith(createLoanModel: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -734,22 +1408,27 @@ abstract class _$QrScannerStateCopyWith<$Res>
       String customerAccount,
       String date,
       String getScannedDetails,
+      String otpMobileNumber,
       TextEditingController amountController,
       Option<Either<QrScannerFailure, CreateTranscationModel>>
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
-      int creditApproved,
       String creditAvailable,
       String txnId,
       bool isLoading,
       Option<Either<QrScannerFailure, GetCreditModel>>
           getCreditFailureOrSuccess,
-      GetCreditModel? getCreditModel});
+      GetCreditModel? getCreditModel,
+      Option<Either<QrScannerFailure, CreateLoanModel>>
+          getCreateLoanFailureOrSuccess,
+      CreateLoanModel? createLoanModel});
 
   @override
   $CreateTranscationModelCopyWith<$Res>? get createTranscationModel;
   @override
   $GetCreditModelCopyWith<$Res>? get getCreditModel;
+  @override
+  $CreateLoanModelCopyWith<$Res>? get createLoanModel;
 }
 
 /// @nodoc
@@ -769,15 +1448,17 @@ class __$QrScannerStateCopyWithImpl<$Res>
     Object? customerAccount = freezed,
     Object? date = freezed,
     Object? getScannedDetails = freezed,
+    Object? otpMobileNumber = freezed,
     Object? amountController = freezed,
     Object? getCreateTxnFailureOrSuccess = freezed,
     Object? createTranscationModel = freezed,
-    Object? creditApproved = freezed,
     Object? creditAvailable = freezed,
     Object? txnId = freezed,
     Object? isLoading = freezed,
     Object? getCreditFailureOrSuccess = freezed,
     Object? getCreditModel = freezed,
+    Object? getCreateLoanFailureOrSuccess = freezed,
+    Object? createLoanModel = freezed,
   }) {
     return _then(_QrScannerState(
       merchantAccount: merchantAccount == freezed
@@ -796,6 +1477,10 @@ class __$QrScannerStateCopyWithImpl<$Res>
           ? _value.getScannedDetails
           : getScannedDetails // ignore: cast_nullable_to_non_nullable
               as String,
+      otpMobileNumber: otpMobileNumber == freezed
+          ? _value.otpMobileNumber
+          : otpMobileNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       amountController: amountController == freezed
           ? _value.amountController
           : amountController // ignore: cast_nullable_to_non_nullable
@@ -808,10 +1493,6 @@ class __$QrScannerStateCopyWithImpl<$Res>
           ? _value.createTranscationModel
           : createTranscationModel // ignore: cast_nullable_to_non_nullable
               as CreateTranscationModel?,
-      creditApproved: creditApproved == freezed
-          ? _value.creditApproved
-          : creditApproved // ignore: cast_nullable_to_non_nullable
-              as int,
       creditAvailable: creditAvailable == freezed
           ? _value.creditAvailable
           : creditAvailable // ignore: cast_nullable_to_non_nullable
@@ -832,6 +1513,14 @@ class __$QrScannerStateCopyWithImpl<$Res>
           ? _value.getCreditModel
           : getCreditModel // ignore: cast_nullable_to_non_nullable
               as GetCreditModel?,
+      getCreateLoanFailureOrSuccess: getCreateLoanFailureOrSuccess == freezed
+          ? _value.getCreateLoanFailureOrSuccess
+          : getCreateLoanFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<QrScannerFailure, CreateLoanModel>>,
+      createLoanModel: createLoanModel == freezed
+          ? _value.createLoanModel
+          : createLoanModel // ignore: cast_nullable_to_non_nullable
+              as CreateLoanModel?,
     ));
   }
 }
@@ -844,15 +1533,17 @@ class _$_QrScannerState implements _QrScannerState {
       required this.customerAccount,
       required this.date,
       required this.getScannedDetails,
+      required this.otpMobileNumber,
       required this.amountController,
       required this.getCreateTxnFailureOrSuccess,
       this.createTranscationModel,
-      required this.creditApproved,
       required this.creditAvailable,
       required this.txnId,
       required this.isLoading,
       required this.getCreditFailureOrSuccess,
-      this.getCreditModel});
+      this.getCreditModel,
+      required this.getCreateLoanFailureOrSuccess,
+      this.createLoanModel});
 
   @override // --------- createTxn -----------
   final String merchantAccount;
@@ -863,6 +1554,8 @@ class _$_QrScannerState implements _QrScannerState {
   @override
   final String getScannedDetails;
   @override
+  final String otpMobileNumber;
+  @override
   final TextEditingController amountController;
   @override
   final Option<Either<QrScannerFailure, CreateTranscationModel>>
@@ -870,8 +1563,7 @@ class _$_QrScannerState implements _QrScannerState {
   @override
   final CreateTranscationModel? createTranscationModel;
   @override // ---------- getCredit ------------
-  final int creditApproved;
-  @override
+// required int creditApproved,
   final String creditAvailable;
   @override
   final String txnId;
@@ -882,10 +1574,15 @@ class _$_QrScannerState implements _QrScannerState {
       getCreditFailureOrSuccess;
   @override
   final GetCreditModel? getCreditModel;
+  @override // --------- createLoan -------------
+  final Option<Either<QrScannerFailure, CreateLoanModel>>
+      getCreateLoanFailureOrSuccess;
+  @override
+  final CreateLoanModel? createLoanModel;
 
   @override
   String toString() {
-    return 'QrScannerState(merchantAccount: $merchantAccount, customerAccount: $customerAccount, date: $date, getScannedDetails: $getScannedDetails, amountController: $amountController, getCreateTxnFailureOrSuccess: $getCreateTxnFailureOrSuccess, createTranscationModel: $createTranscationModel, creditApproved: $creditApproved, creditAvailable: $creditAvailable, txnId: $txnId, isLoading: $isLoading, getCreditFailureOrSuccess: $getCreditFailureOrSuccess, getCreditModel: $getCreditModel)';
+    return 'QrScannerState(merchantAccount: $merchantAccount, customerAccount: $customerAccount, date: $date, getScannedDetails: $getScannedDetails, otpMobileNumber: $otpMobileNumber, amountController: $amountController, getCreateTxnFailureOrSuccess: $getCreateTxnFailureOrSuccess, createTranscationModel: $createTranscationModel, creditAvailable: $creditAvailable, txnId: $txnId, isLoading: $isLoading, getCreditFailureOrSuccess: $getCreditFailureOrSuccess, getCreditModel: $getCreditModel, getCreateLoanFailureOrSuccess: $getCreateLoanFailureOrSuccess, createLoanModel: $createLoanModel)';
   }
 
   @override
@@ -901,6 +1598,8 @@ class _$_QrScannerState implements _QrScannerState {
             const DeepCollectionEquality()
                 .equals(other.getScannedDetails, getScannedDetails) &&
             const DeepCollectionEquality()
+                .equals(other.otpMobileNumber, otpMobileNumber) &&
+            const DeepCollectionEquality()
                 .equals(other.amountController, amountController) &&
             const DeepCollectionEquality().equals(
                 other.getCreateTxnFailureOrSuccess,
@@ -908,15 +1607,18 @@ class _$_QrScannerState implements _QrScannerState {
             const DeepCollectionEquality()
                 .equals(other.createTranscationModel, createTranscationModel) &&
             const DeepCollectionEquality()
-                .equals(other.creditApproved, creditApproved) &&
-            const DeepCollectionEquality()
                 .equals(other.creditAvailable, creditAvailable) &&
             const DeepCollectionEquality().equals(other.txnId, txnId) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(
                 other.getCreditFailureOrSuccess, getCreditFailureOrSuccess) &&
             const DeepCollectionEquality()
-                .equals(other.getCreditModel, getCreditModel));
+                .equals(other.getCreditModel, getCreditModel) &&
+            const DeepCollectionEquality().equals(
+                other.getCreateLoanFailureOrSuccess,
+                getCreateLoanFailureOrSuccess) &&
+            const DeepCollectionEquality()
+                .equals(other.createLoanModel, createLoanModel));
   }
 
   @override
@@ -926,15 +1628,17 @@ class _$_QrScannerState implements _QrScannerState {
       const DeepCollectionEquality().hash(customerAccount),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(getScannedDetails),
+      const DeepCollectionEquality().hash(otpMobileNumber),
       const DeepCollectionEquality().hash(amountController),
       const DeepCollectionEquality().hash(getCreateTxnFailureOrSuccess),
       const DeepCollectionEquality().hash(createTranscationModel),
-      const DeepCollectionEquality().hash(creditApproved),
       const DeepCollectionEquality().hash(creditAvailable),
       const DeepCollectionEquality().hash(txnId),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(getCreditFailureOrSuccess),
-      const DeepCollectionEquality().hash(getCreditModel));
+      const DeepCollectionEquality().hash(getCreditModel),
+      const DeepCollectionEquality().hash(getCreateLoanFailureOrSuccess),
+      const DeepCollectionEquality().hash(createLoanModel));
 
   @JsonKey(ignore: true)
   @override
@@ -948,17 +1652,20 @@ abstract class _QrScannerState implements QrScannerState {
       required String customerAccount,
       required String date,
       required String getScannedDetails,
+      required String otpMobileNumber,
       required TextEditingController amountController,
       required Option<Either<QrScannerFailure, CreateTranscationModel>>
           getCreateTxnFailureOrSuccess,
       CreateTranscationModel? createTranscationModel,
-      required int creditApproved,
       required String creditAvailable,
       required String txnId,
       required bool isLoading,
       required Option<Either<QrScannerFailure, GetCreditModel>>
           getCreditFailureOrSuccess,
-      GetCreditModel? getCreditModel}) = _$_QrScannerState;
+      GetCreditModel? getCreditModel,
+      required Option<Either<QrScannerFailure, CreateLoanModel>>
+          getCreateLoanFailureOrSuccess,
+      CreateLoanModel? createLoanModel}) = _$_QrScannerState;
 
   @override // --------- createTxn -----------
   String get merchantAccount;
@@ -969,6 +1676,8 @@ abstract class _QrScannerState implements QrScannerState {
   @override
   String get getScannedDetails;
   @override
+  String get otpMobileNumber;
+  @override
   TextEditingController get amountController;
   @override
   Option<Either<QrScannerFailure, CreateTranscationModel>>
@@ -976,8 +1685,7 @@ abstract class _QrScannerState implements QrScannerState {
   @override
   CreateTranscationModel? get createTranscationModel;
   @override // ---------- getCredit ------------
-  int get creditApproved;
-  @override
+// required int creditApproved,
   String get creditAvailable;
   @override
   String get txnId;
@@ -988,6 +1696,11 @@ abstract class _QrScannerState implements QrScannerState {
       get getCreditFailureOrSuccess;
   @override
   GetCreditModel? get getCreditModel;
+  @override // --------- createLoan -------------
+  Option<Either<QrScannerFailure, CreateLoanModel>>
+      get getCreateLoanFailureOrSuccess;
+  @override
+  CreateLoanModel? get createLoanModel;
   @override
   @JsonKey(ignore: true)
   _$QrScannerStateCopyWith<_QrScannerState> get copyWith =>

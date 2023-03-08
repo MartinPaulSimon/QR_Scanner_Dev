@@ -8,19 +8,25 @@ class QrScannerState with _$QrScannerState {
     required String customerAccount,
     required String date,
     required String getScannedDetails,
+    required String otpMobileNumber,
     required TextEditingController amountController,
     required Option<Either<QrScannerFailure, CreateTranscationModel>>
         getCreateTxnFailureOrSuccess,
     CreateTranscationModel? createTranscationModel,
 
     // ---------- getCredit ------------
-    required int creditApproved,
+    // required int creditApproved,
     required String creditAvailable,
     required String txnId,
     required bool isLoading,
     required Option<Either<QrScannerFailure, GetCreditModel>>
         getCreditFailureOrSuccess,
     GetCreditModel? getCreditModel,
+
+    // --------- createLoan -------------
+    required Option<Either<QrScannerFailure, CreateLoanModel>>
+        getCreateLoanFailureOrSuccess,
+    CreateLoanModel? createLoanModel,
   }) = _QrScannerState;
 
   // --------- Initial state -------------------
@@ -32,12 +38,12 @@ class QrScannerState with _$QrScannerState {
       customerAccount: '',
       date: '',
       txnId: '',
+      otpMobileNumber: '',
       amountController: TextEditingController(),
       getCreateTxnFailureOrSuccess: none(),
       getCreditFailureOrSuccess: none(),
-
-      // --------- getCredit -------------
-      creditApproved: 0,
+      getCreateLoanFailureOrSuccess: none(),
+      // creditApproved: 0,
       creditAvailable: '',
       isLoading: false,
     );

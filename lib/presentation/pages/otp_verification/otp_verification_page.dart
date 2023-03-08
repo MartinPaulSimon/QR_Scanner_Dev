@@ -17,65 +17,72 @@ class OtpVerificationPage extends StatelessWidget {
     // final _otpPinFieldController = GlobalKey<OtpPinFieldState>();
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: ListView(
-        children: [
-          kHeight70,
-          Image.asset(
-            "assets/images/otpimage.png",
-            height: 100,
-          ),
-          kHeight30,
-          commonTexts(
-            label: context.read<QrScannerBloc>().state.amountController.text,
-            color: Colors.yellow,
-            fontSize: 22,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.bold,
-          ),
-          kHeight20,
-          commonTexts(
-              label: "Transferring to",
-              color: Colors.white70,
-              fontSize: 18,
-              textAlign: TextAlign.center),
-          kHeight10,
-          commonTexts(
-            label: "Venus Digital Arcade",
-            color: kPrimaryColor,
-            fontSize: 20,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.bold,
-          ),
-          kHeight10,
-          commonTexts(
-              label: "Transfer on Mar 2, 2020",
-              color: Colors.orange,
-              fontSize: 14,
-              textAlign: TextAlign.center),
-          kHeight70,
-          commonTexts(
-            label: "Please enter the verification send \n to  +91 9568745931",
-            fontSize: 14,
-            color: Colors.white60,
-            textAlign: TextAlign.center,
-          ),
-          kHeight30,
+      body: BlocBuilder<QrScannerBloc, QrScannerState>(
+        builder: (context, state) {
+          return ListView(
+            children: [
+              kHeight70,
+              Image.asset(
+                "assets/images/otpimage.png",
+                height: 100,
+              ),
+              kHeight30,
+              commonTexts(
+                label:
+                    context.read<QrScannerBloc>().state.amountController.text,
+                color: Colors.yellow,
+                fontSize: 22,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.bold,
+              ),
+              kHeight20,
+              commonTexts(
+                  label: "Transferring to",
+                  color: Colors.white70,
+                  fontSize: 18,
+                  textAlign: TextAlign.center),
+              kHeight10,
+              commonTexts(
+                label: state.merchantAccount,
+                color: kPrimaryColor,
+                fontSize: 20,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.bold,
+              ),
+              kHeight10,
+              commonTexts(
+                  label: "Transfer on ${state.date}",
+                  color: Colors.orange,
+                  fontSize: 14,
+                  textAlign: TextAlign.center),
+              kHeight70,
+              commonTexts(
+                label:
+                    "Please enter the verification send \n to  ${state.createTranscationModel!.otpMobNumber}",
+                fontSize: 14,
+                color: Colors.white60,
+                textAlign: TextAlign.center,
+              ),
+              kHeight30,
 
-          //------------OTP receiving or typing field-----------------
-          const PinField(),
-          kHeight90,
+              //------------OTP receiving or typing field-----------------
+              const PinField(),
+              kHeight90,
 
-          //------------ Confirm OTP Button ---------------
-          CommonNeumorphicButton(
-            label: "Confirm OTP",
-            onTap: (() => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ConfirmMsgPage(),
-                  ),
-                )),
-          ),
-        ],
+              //------------ Confirm OTP Button ---------------
+              CommonNeumorphicButton(
+                label: "Confirm OTP",
+                onTap: (() {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ConfirmMsgPage(),
+                      ));
+                }),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

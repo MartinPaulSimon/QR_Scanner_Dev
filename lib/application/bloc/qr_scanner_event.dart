@@ -9,6 +9,21 @@ class QrScannerEvent with _$QrScannerEvent {
       required String customerAccount}) = _GetQrScannedDeatils;
 
   const factory QrScannerEvent.getCreditDetails({
-    required int creditApproved,
+    required String txnNo,
   }) = _GetCreditDetails;
+
+  const factory QrScannerEvent.isPaymentEligible({
+    required double amount,
+    required String txnId,
+  }) = _IsPaymentEligible;
+
+  const factory QrScannerEvent.otpVerification({
+    required String merchantAccount,
+    required String customerAccount,
+  }) = _OtpVerification;
+
+  const factory QrScannerEvent.approveLoanWithOtp({
+    required String txnId,
+    required int otp,
+  }) = _ApproveLoanWithOtp;
 }

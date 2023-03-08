@@ -8,13 +8,20 @@ class SpeedoMeterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    QrScannerState? state;
-    if (state!.isLoading) {
-      return const CircularProgressIndicator();
-    }
+    // QrScannerState? state;
+    // if (state!.isLoading) {
+    //   return const CircularProgressIndicator();
+    // }
 
     return Center(
-      child: BlocBuilder<QrScannerBloc, QrScannerState>(
+      child: BlocConsumer<QrScannerBloc, QrScannerState>(
+        listener: (context, state) {
+          // context
+          //     .read<QrScannerBloc>()
+          //     .add(const QrScannerEvent.getCreditDetails(
+          //         //   creditApproved: state.creditApproved
+          //         ));
+        },
         builder: (context, state) {
           return SfRadialGauge(
             enableLoadingAnimation: true,
@@ -26,13 +33,19 @@ class SpeedoMeterWidget extends StatelessWidget {
                 endAngle: 0,
                 radiusFactor: 0.8,
                 minimum: 0,
-                maximum: 180,
+                maximum: state.getCreditModel != null
+                    ? double.parse(
+                        state.getCreditModel!.creditApproved.toString())
+                    : 500,
                 axisLineStyle: const AxisLineStyle(),
-                pointers: const <GaugePointer>[
+                pointers: <GaugePointer>[
                   NeedlePointer(
-                    knobStyle:
-                        KnobStyle(color: Colors.blueGrey, knobRadius: 0.10),
-                    value: 90,
+                    knobStyle: const KnobStyle(
+                        color: Colors.blueGrey, knobRadius: 0.10),
+                    value: state.getCreditModel != null
+                        ? double.parse(
+                            state.getCreditModel!.creditAvailable.toString())
+                        : 0,
                     enableAnimation: true,
                     needleColor: Colors.blueGrey,
                     animationType: AnimationType.elasticOut,
@@ -43,18 +56,26 @@ class SpeedoMeterWidget extends StatelessWidget {
                   //------ total credit ----------
                   GaugeRange(
                       startValue: 0,
-                      endValue: double.parse(state.creditApproved.toString()),
-                      color: Colors.yellow),
+                      endValue: state.getCreditModel != null
+                          ? double.parse(
+                              state.getCreditModel!.creditApproved.toString())
+                          : 0,
+                      color: Colors.green),
+
                   //---- balance credit -----------
                   GaugeRange(
                       startValue: 0,
-                      endValue: double.parse(state.creditAvailable.toString()),
-                      color: Colors.green),
-                  //------ used credit --------------
-                  GaugeRange(
-                      startValue: 0,
-                      endValue: double.parse(state.amountController.toString()),
+                      endValue: state.getCreditModel != null
+                          ? double.parse(state.getCreditModel!.creditAvailable)
+                          : 0,
                       color: Colors.red),
+                  //------ used credit --------------
+                  // print(state.amountController),
+                  // GaugeRange(
+                  //     startValue: 100,
+                  //     endValue: 500,
+                  //     //double.parse(state.amountController.text),
+                  //     color: Colors.red),
                 ],
               ),
             ],

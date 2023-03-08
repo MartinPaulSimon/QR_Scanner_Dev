@@ -9,7 +9,8 @@ import 'package:http/http.dart' as http;
 
 import '../api_endpoints.dart';
 
-@injectable
+@Injectable(as: IQrScannerRepo)
+@prod
 class QrScannerRepo implements IQrScannerRepo {
   // ------------------ getCredit API ------------------------
   @override
@@ -19,8 +20,11 @@ class QrScannerRepo implements IQrScannerRepo {
       Map<String, dynamic> parameters = {
         "txnid": txnId,
       };
-      final uri = Uri.http(authority, "/getcredit", parameters);
-      final response = await http.get(uri);
+      final uri = Uri.http(authority, "api/getcredit", parameters);
+      print(uri);
+      final response = await http.Client().get(uri);
+
+      print(response);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final models = jsonDecode(response.body);
         final GetCreditModel getCreditModels = GetCreditModel.fromJson(models);
@@ -67,7 +71,7 @@ class QrScannerRepo implements IQrScannerRepo {
       };
 
       final uri = Uri.http(authority, "/createloan", parameters);
-      final response = await http.get(uri);
+      final response = await http.Client().get(uri);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final models = jsonDecode(response.body);
         final CreateLoanModel createLoanModels =
@@ -93,8 +97,10 @@ class QrScannerRepo implements IQrScannerRepo {
         "date": date,
       };
 
-      final uri = Uri.http(authority, "/createtxn", parameters);
-      final response = await http.get(uri);
+      final uri = Uri.http(authority, "api/createtxn", parameters);
+      print(uri);
+      final response = await http.Client().get(uri);
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         final models = jsonDecode(response.body);
         final CreateTranscationModel createTranscationModels =

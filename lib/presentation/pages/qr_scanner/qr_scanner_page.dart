@@ -78,6 +78,7 @@ class QRScannerPage extends StatelessWidget {
                     merchantAccount: merchant,
                     customerAccount: address,
                   ));
+
               Navigator.push(
                   context,
                   MaterialPageRoute(
