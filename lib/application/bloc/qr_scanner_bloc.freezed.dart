@@ -1185,7 +1185,10 @@ class _$QrScannerStateTearOff {
       GetCreditModel? getCreditModel,
       required Option<Either<QrScannerFailure, CreateLoanModel>>
           getCreateLoanFailureOrSuccess,
-      CreateLoanModel? createLoanModel}) {
+      CreateLoanModel? createLoanModel,
+      required Option<Either<QrScannerFailure, ApproveLoanModel>>
+          getApproveLoanFailureOrSuccess,
+      ApproveLoanModel? approveLoanModel}) {
     return _QrScannerState(
       merchantAccount: merchantAccount,
       customerAccount: customerAccount,
@@ -1202,6 +1205,8 @@ class _$QrScannerStateTearOff {
       getCreditModel: getCreditModel,
       getCreateLoanFailureOrSuccess: getCreateLoanFailureOrSuccess,
       createLoanModel: createLoanModel,
+      getApproveLoanFailureOrSuccess: getApproveLoanFailureOrSuccess,
+      approveLoanModel: approveLoanModel,
     );
   }
 }
@@ -1233,7 +1238,12 @@ mixin _$QrScannerState {
       throw _privateConstructorUsedError; // --------- createLoan -------------
   Option<Either<QrScannerFailure, CreateLoanModel>>
       get getCreateLoanFailureOrSuccess => throw _privateConstructorUsedError;
-  CreateLoanModel? get createLoanModel => throw _privateConstructorUsedError;
+  CreateLoanModel? get createLoanModel =>
+      throw _privateConstructorUsedError; // --------- approveLoan ---------------
+// required TextEditingController otpController,
+  Option<Either<QrScannerFailure, ApproveLoanModel>>
+      get getApproveLoanFailureOrSuccess => throw _privateConstructorUsedError;
+  ApproveLoanModel? get approveLoanModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QrScannerStateCopyWith<QrScannerState> get copyWith =>
@@ -1263,11 +1273,15 @@ abstract class $QrScannerStateCopyWith<$Res> {
       GetCreditModel? getCreditModel,
       Option<Either<QrScannerFailure, CreateLoanModel>>
           getCreateLoanFailureOrSuccess,
-      CreateLoanModel? createLoanModel});
+      CreateLoanModel? createLoanModel,
+      Option<Either<QrScannerFailure, ApproveLoanModel>>
+          getApproveLoanFailureOrSuccess,
+      ApproveLoanModel? approveLoanModel});
 
   $CreateTranscationModelCopyWith<$Res>? get createTranscationModel;
   $GetCreditModelCopyWith<$Res>? get getCreditModel;
   $CreateLoanModelCopyWith<$Res>? get createLoanModel;
+  $ApproveLoanModelCopyWith<$Res>? get approveLoanModel;
 }
 
 /// @nodoc
@@ -1296,6 +1310,8 @@ class _$QrScannerStateCopyWithImpl<$Res>
     Object? getCreditModel = freezed,
     Object? getCreateLoanFailureOrSuccess = freezed,
     Object? createLoanModel = freezed,
+    Object? getApproveLoanFailureOrSuccess = freezed,
+    Object? approveLoanModel = freezed,
   }) {
     return _then(_value.copyWith(
       merchantAccount: merchantAccount == freezed
@@ -1358,6 +1374,14 @@ class _$QrScannerStateCopyWithImpl<$Res>
           ? _value.createLoanModel
           : createLoanModel // ignore: cast_nullable_to_non_nullable
               as CreateLoanModel?,
+      getApproveLoanFailureOrSuccess: getApproveLoanFailureOrSuccess == freezed
+          ? _value.getApproveLoanFailureOrSuccess
+          : getApproveLoanFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<QrScannerFailure, ApproveLoanModel>>,
+      approveLoanModel: approveLoanModel == freezed
+          ? _value.approveLoanModel
+          : approveLoanModel // ignore: cast_nullable_to_non_nullable
+              as ApproveLoanModel?,
     ));
   }
 
@@ -1394,6 +1418,17 @@ class _$QrScannerStateCopyWithImpl<$Res>
       return _then(_value.copyWith(createLoanModel: value));
     });
   }
+
+  @override
+  $ApproveLoanModelCopyWith<$Res>? get approveLoanModel {
+    if (_value.approveLoanModel == null) {
+      return null;
+    }
+
+    return $ApproveLoanModelCopyWith<$Res>(_value.approveLoanModel!, (value) {
+      return _then(_value.copyWith(approveLoanModel: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -1421,7 +1456,10 @@ abstract class _$QrScannerStateCopyWith<$Res>
       GetCreditModel? getCreditModel,
       Option<Either<QrScannerFailure, CreateLoanModel>>
           getCreateLoanFailureOrSuccess,
-      CreateLoanModel? createLoanModel});
+      CreateLoanModel? createLoanModel,
+      Option<Either<QrScannerFailure, ApproveLoanModel>>
+          getApproveLoanFailureOrSuccess,
+      ApproveLoanModel? approveLoanModel});
 
   @override
   $CreateTranscationModelCopyWith<$Res>? get createTranscationModel;
@@ -1429,6 +1467,8 @@ abstract class _$QrScannerStateCopyWith<$Res>
   $GetCreditModelCopyWith<$Res>? get getCreditModel;
   @override
   $CreateLoanModelCopyWith<$Res>? get createLoanModel;
+  @override
+  $ApproveLoanModelCopyWith<$Res>? get approveLoanModel;
 }
 
 /// @nodoc
@@ -1459,6 +1499,8 @@ class __$QrScannerStateCopyWithImpl<$Res>
     Object? getCreditModel = freezed,
     Object? getCreateLoanFailureOrSuccess = freezed,
     Object? createLoanModel = freezed,
+    Object? getApproveLoanFailureOrSuccess = freezed,
+    Object? approveLoanModel = freezed,
   }) {
     return _then(_QrScannerState(
       merchantAccount: merchantAccount == freezed
@@ -1521,6 +1563,14 @@ class __$QrScannerStateCopyWithImpl<$Res>
           ? _value.createLoanModel
           : createLoanModel // ignore: cast_nullable_to_non_nullable
               as CreateLoanModel?,
+      getApproveLoanFailureOrSuccess: getApproveLoanFailureOrSuccess == freezed
+          ? _value.getApproveLoanFailureOrSuccess
+          : getApproveLoanFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<QrScannerFailure, ApproveLoanModel>>,
+      approveLoanModel: approveLoanModel == freezed
+          ? _value.approveLoanModel
+          : approveLoanModel // ignore: cast_nullable_to_non_nullable
+              as ApproveLoanModel?,
     ));
   }
 }
@@ -1543,7 +1593,9 @@ class _$_QrScannerState implements _QrScannerState {
       required this.getCreditFailureOrSuccess,
       this.getCreditModel,
       required this.getCreateLoanFailureOrSuccess,
-      this.createLoanModel});
+      this.createLoanModel,
+      required this.getApproveLoanFailureOrSuccess,
+      this.approveLoanModel});
 
   @override // --------- createTxn -----------
   final String merchantAccount;
@@ -1579,10 +1631,16 @@ class _$_QrScannerState implements _QrScannerState {
       getCreateLoanFailureOrSuccess;
   @override
   final CreateLoanModel? createLoanModel;
+  @override // --------- approveLoan ---------------
+// required TextEditingController otpController,
+  final Option<Either<QrScannerFailure, ApproveLoanModel>>
+      getApproveLoanFailureOrSuccess;
+  @override
+  final ApproveLoanModel? approveLoanModel;
 
   @override
   String toString() {
-    return 'QrScannerState(merchantAccount: $merchantAccount, customerAccount: $customerAccount, date: $date, getScannedDetails: $getScannedDetails, otpMobileNumber: $otpMobileNumber, amountController: $amountController, getCreateTxnFailureOrSuccess: $getCreateTxnFailureOrSuccess, createTranscationModel: $createTranscationModel, creditAvailable: $creditAvailable, txnId: $txnId, isLoading: $isLoading, getCreditFailureOrSuccess: $getCreditFailureOrSuccess, getCreditModel: $getCreditModel, getCreateLoanFailureOrSuccess: $getCreateLoanFailureOrSuccess, createLoanModel: $createLoanModel)';
+    return 'QrScannerState(merchantAccount: $merchantAccount, customerAccount: $customerAccount, date: $date, getScannedDetails: $getScannedDetails, otpMobileNumber: $otpMobileNumber, amountController: $amountController, getCreateTxnFailureOrSuccess: $getCreateTxnFailureOrSuccess, createTranscationModel: $createTranscationModel, creditAvailable: $creditAvailable, txnId: $txnId, isLoading: $isLoading, getCreditFailureOrSuccess: $getCreditFailureOrSuccess, getCreditModel: $getCreditModel, getCreateLoanFailureOrSuccess: $getCreateLoanFailureOrSuccess, createLoanModel: $createLoanModel, getApproveLoanFailureOrSuccess: $getApproveLoanFailureOrSuccess, approveLoanModel: $approveLoanModel)';
   }
 
   @override
@@ -1618,7 +1676,12 @@ class _$_QrScannerState implements _QrScannerState {
                 other.getCreateLoanFailureOrSuccess,
                 getCreateLoanFailureOrSuccess) &&
             const DeepCollectionEquality()
-                .equals(other.createLoanModel, createLoanModel));
+                .equals(other.createLoanModel, createLoanModel) &&
+            const DeepCollectionEquality().equals(
+                other.getApproveLoanFailureOrSuccess,
+                getApproveLoanFailureOrSuccess) &&
+            const DeepCollectionEquality()
+                .equals(other.approveLoanModel, approveLoanModel));
   }
 
   @override
@@ -1638,7 +1701,9 @@ class _$_QrScannerState implements _QrScannerState {
       const DeepCollectionEquality().hash(getCreditFailureOrSuccess),
       const DeepCollectionEquality().hash(getCreditModel),
       const DeepCollectionEquality().hash(getCreateLoanFailureOrSuccess),
-      const DeepCollectionEquality().hash(createLoanModel));
+      const DeepCollectionEquality().hash(createLoanModel),
+      const DeepCollectionEquality().hash(getApproveLoanFailureOrSuccess),
+      const DeepCollectionEquality().hash(approveLoanModel));
 
   @JsonKey(ignore: true)
   @override
@@ -1665,7 +1730,10 @@ abstract class _QrScannerState implements QrScannerState {
       GetCreditModel? getCreditModel,
       required Option<Either<QrScannerFailure, CreateLoanModel>>
           getCreateLoanFailureOrSuccess,
-      CreateLoanModel? createLoanModel}) = _$_QrScannerState;
+      CreateLoanModel? createLoanModel,
+      required Option<Either<QrScannerFailure, ApproveLoanModel>>
+          getApproveLoanFailureOrSuccess,
+      ApproveLoanModel? approveLoanModel}) = _$_QrScannerState;
 
   @override // --------- createTxn -----------
   String get merchantAccount;
@@ -1701,6 +1769,12 @@ abstract class _QrScannerState implements QrScannerState {
       get getCreateLoanFailureOrSuccess;
   @override
   CreateLoanModel? get createLoanModel;
+  @override // --------- approveLoan ---------------
+// required TextEditingController otpController,
+  Option<Either<QrScannerFailure, ApproveLoanModel>>
+      get getApproveLoanFailureOrSuccess;
+  @override
+  ApproveLoanModel? get approveLoanModel;
   @override
   @JsonKey(ignore: true)
   _$QrScannerStateCopyWith<_QrScannerState> get copyWith =>

@@ -27,32 +27,20 @@ class QrScannerBloc extends Bloc<QrScannerEvent, QrScannerState> {
         customerAccount: event.customerAccount,
         date: DateTime.now().toString(),
       ));
-
-      // final Either<QrScannerFailure, CreateTranscationModel>
-      //     createTxnAPIResult = await iQrScannerRepo.getScannedDetails(
-      //         merchantAccount: event.merchantAccount,
-      //         customerAccount: event.customerAccount,
-      //         date: event.date);
-      // emit(createTxnAPIResult.fold(
-      //     (failure) => state.copyWith(
-      //           getCreateTxnFailureOrSuccess: Some(Left(failure)),
-      //         ),
-      //     (success) => state.copyWith(
-      //           getCreateTxnFailureOrSuccess: Some(Right(success)),
-      //           createTranscationModel: success,
-      //         )));
     });
 
     // --------------- getCredit API ----------------
     on<_GetCreditDetails>((event, emit) async {
       emit(state.copyWith(
-          isLoading: true,
-          getCreditFailureOrSuccess: none(),
-          getCreateTxnFailureOrSuccess: none()
-          // creditApproved: event.creditApproved,
-          // creditAvailable: state.creditAvailable,
-          // amountController: state.amountController,
-          ));
+        isLoading: true,
+        getCreditFailureOrSuccess: none(),
+        getCreateTxnFailureOrSuccess: none(),
+        getCreateLoanFailureOrSuccess: none(),
+        getApproveLoanFailureOrSuccess: none(),
+        // creditApproved: event.creditApproved,
+        // creditAvailable: state.creditAvailable,
+        // amountController: state.amountController,
+      ));
 
       final Either<QrScannerFailure, GetCreditModel> getCreditAPIResult =
           await iQrScannerRepo.getCreditScoreDetails(txnId: event.txnNo);
@@ -60,10 +48,14 @@ class QrScannerBloc extends Bloc<QrScannerEvent, QrScannerState> {
           (failure) => state.copyWith(
               isLoading: true,
               getCreateTxnFailureOrSuccess: none(),
+              getCreateLoanFailureOrSuccess: none(),
+              getApproveLoanFailureOrSuccess: none(),
               getCreditFailureOrSuccess: Some(Left(failure))),
           (success) => state.copyWith(
                 isLoading: false,
                 getCreateTxnFailureOrSuccess: none(),
+                getCreateLoanFailureOrSuccess: none(),
+                getApproveLoanFailureOrSuccess: none(),
                 getCreditFailureOrSuccess: Some(Right(success)),
                 getCreditModel: success,
               )));
@@ -75,6 +67,7 @@ class QrScannerBloc extends Bloc<QrScannerEvent, QrScannerState> {
         getCreditFailureOrSuccess: none(),
         getCreateTxnFailureOrSuccess: none(),
         getCreateLoanFailureOrSuccess: none(),
+        getApproveLoanFailureOrSuccess: none(),
       ));
 
       final Either<QrScannerFailure, CreateLoanModel> createLoanAPIResult =
@@ -85,10 +78,12 @@ class QrScannerBloc extends Bloc<QrScannerEvent, QrScannerState> {
                 getCreditFailureOrSuccess: none(),
                 getCreateTxnFailureOrSuccess: none(),
                 getCreateLoanFailureOrSuccess: none(),
+                getApproveLoanFailureOrSuccess: none(),
               ),
           (success) => state.copyWith(
                 getCreditFailureOrSuccess: none(),
                 getCreateTxnFailureOrSuccess: none(),
+                getApproveLoanFailureOrSuccess: none(),
                 getCreateLoanFailureOrSuccess: Some(Right(success)),
                 createLoanModel: success,
               )));
@@ -100,24 +95,55 @@ class QrScannerBloc extends Bloc<QrScannerEvent, QrScannerState> {
         getCreditFailureOrSuccess: none(),
         getCreateTxnFailureOrSuccess: none(),
         getCreateLoanFailureOrSuccess: none(),
+        getApproveLoanFailureOrSuccess: none(),
       ));
 
       final Either<QrScannerFailure, CreateTranscationModel>
           createTxnAPIResult = await iQrScannerRepo.getScannedDetails(
               merchantAccount: event.merchantAccount,
               customerAccount: event.customerAccount,
-              date: DateTime.now().toString());
+              date: state.date);
       emit(createTxnAPIResult.fold(
           (failure) => state.copyWith(
                 getCreditFailureOrSuccess: none(),
                 getCreateLoanFailureOrSuccess: none(),
+                getApproveLoanFailureOrSuccess: none(),
                 getCreateTxnFailureOrSuccess: Some(Left(failure)),
               ),
           (success) => state.copyWith(
                 getCreditFailureOrSuccess: none(),
                 getCreateLoanFailureOrSuccess: none(),
+                getApproveLoanFailureOrSuccess: none(),
                 getCreateTxnFailureOrSuccess: Some(Right(success)),
                 createTranscationModel: success,
+              )));
+    });
+
+    // ------------- approveLoan [confirm OTP] ----------------
+    on<_ApproveLoanWithOtp>((event, emit) async {
+      emit(state.copyWith(
+        getCreditFailureOrSuccess: none(),
+        getCreateTxnFailureOrSuccess: none(),
+        getCreateLoanFailureOrSuccess: none(),
+        getApproveLoanFailureOrSuccess: none(),
+      ));
+
+      final Either<QrScannerFailure, ApproveLoanModel> approveLoanAPIResult =
+          await iQrScannerRepo.getLoanApproveDetails(
+              txnId: event.txnId, otp: event.otp.toString());
+      emit(approveLoanAPIResult.fold(
+          (failure) => state.copyWith(
+                getCreditFailureOrSuccess: none(),
+                getCreateTxnFailureOrSuccess: none(),
+                getCreateLoanFailureOrSuccess: none(),
+                getApproveLoanFailureOrSuccess: Some(Left(failure)),
+              ),
+          (success) => state.copyWith(
+                getCreditFailureOrSuccess: none(),
+                getCreateTxnFailureOrSuccess: none(),
+                getCreateLoanFailureOrSuccess: none(),
+                getApproveLoanFailureOrSuccess: Some(Right(success)),
+                approveLoanModel: success,
               )));
     });
   }

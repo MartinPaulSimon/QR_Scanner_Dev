@@ -14,6 +14,7 @@ class ConfirmTransferPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final controller = context.read<QrScannerBloc>().state.amountController;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: kBackgroundColor,
@@ -75,6 +76,7 @@ class ConfirmTransferPage extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 24,
                               color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
@@ -82,15 +84,27 @@ class ConfirmTransferPage extends StatelessWidget {
                             // "5136-1094-8759",
                             style: const TextStyle(
                               color: Colors.grey,
-                              fontSize: 16,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            state.date,
+                            state.txnId,
+                            // "5136-1094-8759",
+                            style: const TextStyle(
+                              color: Colors.green,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Transfer on ${state.date}",
+                            // state.date,
                             // "Transfer on Mar 2, 2020",
                             style: const TextStyle(
-                              color: Colors.yellow,
+                              color: Colors.orange,
                               fontSize: 16,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           kHeight50,
@@ -113,10 +127,12 @@ class ConfirmTransferPage extends StatelessWidget {
                             //         // creditApproved: int.parse(value)
                             //         ));
                           },
-                          controller: context
-                              .read<QrScannerBloc>()
-                              .state
-                              .amountController,
+                          controller:
+                              //  controller,
+                              context
+                                  .read<QrScannerBloc>()
+                                  .state
+                                  .amountController,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -154,13 +170,13 @@ class ConfirmTransferPage extends StatelessWidget {
                   ),
                   kHeight50,
 
-                  TextButton(
-                      onPressed: () {
-                        context.read<QrScannerBloc>().add(
-                            const QrScannerEvent.getCreditDetails(
-                                txnNo: "yyuyujyujuy"));
-                      },
-                      child: const Text("Api")),
+                  // TextButton(
+                  //     onPressed: () {
+                  //       context.read<QrScannerBloc>().add(
+                  //           const QrScannerEvent.getCreditDetails(
+                  //               txnNo: "yyuyujyujuy"));
+                  //     },
+                  //     child: const Text("Api")),
 
                   //----------Speedometer, Pay Button Container-------------
                   Container(
@@ -216,40 +232,62 @@ class ConfirmTransferPage extends StatelessWidget {
                             SizedBox(
                               height: 40,
                               width: 200,
-                              child: NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                    color: Color.fromRGBO(100, 4, 4, 100)),
-                                onPressed: (() {
-                                  context.read<QrScannerBloc>().add(
-                                      QrScannerEvent.isPaymentEligible(
-                                          amount: double.parse(
-                                              state.amountController.text),
-                                          txnId: state.txnId));
+                              child:
+                                  BlocConsumer<QrScannerBloc, QrScannerState>(
+                                listener: (context, state) {
+                                  state.getCreateTxnFailureOrSuccess.fold(
+                                      () => {},
+                                      (_) => {
+                                            // state.amountController.clear(),
+                                            // controller.clear(),
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const OtpVerificationPage(),
+                                              ),
+                                            )
+                                          });
+                                },
+                                builder: (context, state) {
+                                  return NeumorphicButton(
+                                    style: const NeumorphicStyle(
+                                        color: Color.fromRGBO(100, 4, 4, 100)),
+                                    onPressed: (() {
+                                      context.read<QrScannerBloc>().add(
+                                          QrScannerEvent.isPaymentEligible(
+                                              amount: double.parse(
+                                                  state.amountController.text),
+                                              txnId: state.txnId));
 
-                                  context.read<QrScannerBloc>().add(
-                                      const QrScannerEvent.otpVerification(
-                                          merchantAccount:
-                                              "mafarmretail%40mafil",
-                                          // state.merchantAccount,
-                                          customerAccount:
-                                              "melvinsanthosh%40mafil"));
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const OtpVerificationPage(),
+                                      context.read<QrScannerBloc>().add(
+                                          const QrScannerEvent.otpVerification(
+                                              merchantAccount:
+                                                  "mafarmretail%40mafil",
+                                              // state.merchantAccount,
+                                              customerAccount:
+                                                  "melvinsanthosh%40mafil"));
+                                      // state.createTranscationModel != null
+                                      //     ? Navigator.push(
+                                      //         context,
+                                      //         MaterialPageRoute(
+                                      //           builder: (context) =>
+                                      //               const OtpVerificationPage(),
+                                      //         ),
+                                      //       )
+                                      //     : print("ERROR");
+                                    }),
+                                    child: const Text(
+                                      "Pay",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: kPrimaryColor,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   );
-                                }),
-                                child: const Text(
-                                  "Pay",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: kPrimaryColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                },
                               ),
                             ),
                             kHeight30,

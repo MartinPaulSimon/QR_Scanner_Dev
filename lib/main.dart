@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:qr_scanner_prj/presentation/pages/confirm_transfer/confirm_transfer_page.dart';
+import 'package:qr_scanner_prj/presentation/pages/qr_scanner/qr_scanner_page.dart';
 
 import 'application/bloc/qr_scanner_bloc.dart';
 import 'injection.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       create: (BuildContext context) => getIt<QrScannerBloc>(),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: ConfirmTransferPage(),
+        home: QRScannerPage(),
       ),
     );
   }

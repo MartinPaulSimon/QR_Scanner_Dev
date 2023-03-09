@@ -78,7 +78,8 @@ class QRScannerPage extends StatelessWidget {
                     merchantAccount: merchant,
                     customerAccount: address,
                   ));
-
+              context.read<QrScannerBloc>().add(
+                  const QrScannerEvent.getCreditDetails(txnNo: "yyuyujyujuy"));
               Navigator.push(
                   context,
                   MaterialPageRoute(

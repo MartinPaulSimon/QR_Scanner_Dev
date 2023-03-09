@@ -46,8 +46,8 @@ class QrScannerRepo implements IQrScannerRepo {
         "otp": otp,
       };
 
-      final uri = Uri.http(authority, "/approveloan", parameters);
-      final response = await http.get(uri);
+      final uri = Uri.http(authority, "api/approveloan", parameters);
+      final response = await http.Client().get(uri);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final models = jsonDecode(response.body);
         final ApproveLoanModel approveLoanModels =
@@ -70,7 +70,7 @@ class QrScannerRepo implements IQrScannerRepo {
         "amount": amount,
       };
 
-      final uri = Uri.http(authority, "/createloan", parameters);
+      final uri = Uri.http(authority, "api/createloan", parameters);
       final response = await http.Client().get(uri);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final models = jsonDecode(response.body);
@@ -84,7 +84,7 @@ class QrScannerRepo implements IQrScannerRepo {
     }
   }
 
-// ------------------ create txn [scanned details] api -----------------
+// ------------------ create txn api -----------------
   @override
   Future<Either<QrScannerFailure, CreateTranscationModel>> getScannedDetails(
       {required String merchantAccount,

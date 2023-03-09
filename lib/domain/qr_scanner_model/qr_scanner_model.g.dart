@@ -9,8 +9,8 @@ part of 'qr_scanner_model.dart';
 _$_CreateTranscationModel _$$_CreateTranscationModelFromJson(
         Map<String, dynamic> json) =>
     _$_CreateTranscationModel(
-      txnId: json['TxnID'] as String,
-      otpMobNumber: json['OTP_MobileNumber'] as String,
+      txnId: json['TxnID'] as String?,
+      otpMobNumber: json['OTP_MobileNumber'] as String?,
     );
 
 Map<String, dynamic> _$$_CreateTranscationModelToJson(

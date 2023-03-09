@@ -18,6 +18,10 @@ class QRCodeReader extends StatelessWidget {
           CommonNeumorphicButton(
               label: 'Scan QR',
               onTap: () {
+                // context.read<QrScannerBloc>().add(
+                //     const QrScannerEvent.getCreditDetails(
+                //         txnNo: "yyuyujyujuy"));
+
                 scanQRCode();
               }),
 

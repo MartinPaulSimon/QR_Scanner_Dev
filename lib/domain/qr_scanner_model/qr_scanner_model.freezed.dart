@@ -24,8 +24,8 @@ class _$CreateTranscationModelTearOff {
   const _$CreateTranscationModelTearOff();
 
   _CreateTranscationModel call(
-      {@JsonKey(name: 'TxnID') required String txnId,
-      @JsonKey(name: 'OTP_MobileNumber') required String otpMobNumber}) {
+      {@JsonKey(name: 'TxnID') required String? txnId,
+      @JsonKey(name: 'OTP_MobileNumber') required String? otpMobNumber}) {
     return _CreateTranscationModel(
       txnId: txnId,
       otpMobNumber: otpMobNumber,
@@ -43,9 +43,9 @@ const $CreateTranscationModel = _$CreateTranscationModelTearOff();
 /// @nodoc
 mixin _$CreateTranscationModel {
   @JsonKey(name: 'TxnID')
-  String get txnId => throw _privateConstructorUsedError;
+  String? get txnId => throw _privateConstructorUsedError;
   @JsonKey(name: 'OTP_MobileNumber')
-  String get otpMobNumber => throw _privateConstructorUsedError;
+  String? get otpMobNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,8 +59,8 @@ abstract class $CreateTranscationModelCopyWith<$Res> {
           $Res Function(CreateTranscationModel) then) =
       _$CreateTranscationModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'TxnID') String txnId,
-      @JsonKey(name: 'OTP_MobileNumber') String otpMobNumber});
+      {@JsonKey(name: 'TxnID') String? txnId,
+      @JsonKey(name: 'OTP_MobileNumber') String? otpMobNumber});
 }
 
 /// @nodoc
@@ -81,11 +81,11 @@ class _$CreateTranscationModelCopyWithImpl<$Res>
       txnId: txnId == freezed
           ? _value.txnId
           : txnId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       otpMobNumber: otpMobNumber == freezed
           ? _value.otpMobNumber
           : otpMobNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -98,8 +98,8 @@ abstract class _$CreateTranscationModelCopyWith<$Res>
       __$CreateTranscationModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'TxnID') String txnId,
-      @JsonKey(name: 'OTP_MobileNumber') String otpMobNumber});
+      {@JsonKey(name: 'TxnID') String? txnId,
+      @JsonKey(name: 'OTP_MobileNumber') String? otpMobNumber});
 }
 
 /// @nodoc
@@ -122,11 +122,11 @@ class __$CreateTranscationModelCopyWithImpl<$Res>
       txnId: txnId == freezed
           ? _value.txnId
           : txnId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       otpMobNumber: otpMobNumber == freezed
           ? _value.otpMobNumber
           : otpMobNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -143,10 +143,10 @@ class _$_CreateTranscationModel implements _CreateTranscationModel {
 
   @override
   @JsonKey(name: 'TxnID')
-  final String txnId;
+  final String? txnId;
   @override
   @JsonKey(name: 'OTP_MobileNumber')
-  final String otpMobNumber;
+  final String? otpMobNumber;
 
   @override
   String toString() {
@@ -183,8 +183,8 @@ class _$_CreateTranscationModel implements _CreateTranscationModel {
 
 abstract class _CreateTranscationModel implements CreateTranscationModel {
   const factory _CreateTranscationModel(
-          {@JsonKey(name: 'TxnID') required String txnId,
-          @JsonKey(name: 'OTP_MobileNumber') required String otpMobNumber}) =
+          {@JsonKey(name: 'TxnID') required String? txnId,
+          @JsonKey(name: 'OTP_MobileNumber') required String? otpMobNumber}) =
       _$_CreateTranscationModel;
 
   factory _CreateTranscationModel.fromJson(Map<String, dynamic> json) =
@@ -192,10 +192,10 @@ abstract class _CreateTranscationModel implements CreateTranscationModel {
 
   @override
   @JsonKey(name: 'TxnID')
-  String get txnId;
+  String? get txnId;
   @override
   @JsonKey(name: 'OTP_MobileNumber')
-  String get otpMobNumber;
+  String? get otpMobNumber;
   @override
   @JsonKey(ignore: true)
   _$CreateTranscationModelCopyWith<_CreateTranscationModel> get copyWith =>

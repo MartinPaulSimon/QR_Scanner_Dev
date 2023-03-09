@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qr_scanner_prj/application/bloc/qr_scanner_bloc.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 
 import '../../../core/colors.dart';
@@ -13,48 +15,60 @@ class ConfirmMsgPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: ListView(
-        children: [
-          //---------Back button----------
+      body: BlocBuilder<QrScannerBloc, QrScannerState>(
+        builder: (context, state) {
+          return ListView(
+            children: [
+              //---------Back button----------
 
-          kHeight90,
+              kHeight90,
 
-          //--------Success Bulb Image ----------
-          Image.asset(
-            "assets/images/successbulb.png",
-            height: 100,
-          ),
-          kHeight30,
-          //---------- Wohoo! text --------------
-          commonTexts(
-            label: "Wohoo!",
-            color: const Color.fromARGB(234, 142, 254, 14),
-            fontSize: 22,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.bold,
-          ),
-          kHeight120,
-          //----------- Success Message -----------
-          commonTexts(
-            label:
-                "You have successfully \n purchased. \n A receipt for this purchase\n has been sent \n to your email.",
-            color: Colors.white,
-            fontSize: 18,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.bold,
-          ),
-          kHeight120,
-          //----------- Okay button ---------------
-          CommonNeumorphicButton(
-            label: "Okay",
-            onTap: (() => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QRScannerPage(),
-                  ),
-                )),
-          ),
-        ],
+              //--------Success Bulb Image ----------
+              Image.asset(
+                "assets/images/successbulb.png",
+                height: 100,
+              ),
+              kHeight30,
+              //---------- Wohoo! text --------------
+              commonTexts(
+                label: "Wohoo!",
+                color: const Color.fromARGB(234, 142, 254, 14),
+                fontSize: 22,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.bold,
+              ),
+              kHeight120,
+              //----------- Success Message -----------
+              commonTexts(
+                label: "Your purchase is  \n successfully completed.",
+                // \n A receipt for this purchase\n has been sent \n to your email.",
+                color: Colors.white,
+                fontSize: 20,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.w500,
+              ),
+              kHeight30,
+              commonTexts(
+                  label:
+                      "Loan Number is : \n ${state.approveLoanModel!.loanNo}",
+                  color: Colors.blueAccent,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  textAlign: TextAlign.center),
+              kHeight120,
+              //----------- Okay button ---------------
+              CommonNeumorphicButton(
+                label: "Okay",
+                onTap: (() => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const QRScannerPage(),
+                      ),
+                    )),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

@@ -5,8 +5,8 @@ part 'qr_scanner_model.freezed.dart';
 @freezed
 class CreateTranscationModel with _$CreateTranscationModel {
   const factory CreateTranscationModel({
-    @JsonKey(name: 'TxnID') required String txnId,
-    @JsonKey(name: 'OTP_MobileNumber') required String otpMobNumber,
+    @JsonKey(name: 'TxnID') required String? txnId,
+    @JsonKey(name: 'OTP_MobileNumber') required String? otpMobNumber,
   }) = _CreateTranscationModel;
 
   factory CreateTranscationModel.fromJson(Map<String, dynamic> json) =>
@@ -14,33 +14,33 @@ class CreateTranscationModel with _$CreateTranscationModel {
 }
 
 @freezed
-class GetCreditModel with _$GetCreditModel{
+class GetCreditModel with _$GetCreditModel {
   const factory GetCreditModel({
-    @JsonKey(name: 'creditapproved')required int creditApproved,
-    @JsonKey(name: 'creditavailable')required String creditAvailable,
+    @JsonKey(name: 'creditapproved') required int creditApproved,
+    @JsonKey(name: 'creditavailable') required String creditAvailable,
   }) = _GetCreditModel;
 
-  factory GetCreditModel.fromJson(Map<String, dynamic> json) => _$GetCreditModelFromJson(json);
+  factory GetCreditModel.fromJson(Map<String, dynamic> json) =>
+      _$GetCreditModelFromJson(json);
 }
 
-
 @freezed
-class CreateLoanModel with _$CreateLoanModel{
+class CreateLoanModel with _$CreateLoanModel {
   const factory CreateLoanModel({
     required int status,
   }) = _CreateLoanModel;
 
-  factory CreateLoanModel.fromJson(Map<String, dynamic> json) => _$CreateLoanModelFromJson(json);
+  factory CreateLoanModel.fromJson(Map<String, dynamic> json) =>
+      _$CreateLoanModelFromJson(json);
 }
-
 
 @freezed
-class ApproveLoanModel with _$ApproveLoanModel{
+class ApproveLoanModel with _$ApproveLoanModel {
   const factory ApproveLoanModel({
     required int status,
-    @JsonKey(name: 'loanno')required String loanNo,
+    @JsonKey(name: 'loanno') required String loanNo,
   }) = _ApproveLoanModel;
 
-  factory ApproveLoanModel.fromJson(Map<String, dynamic> json) => _$ApproveLoanModelFromJson(json);
+  factory ApproveLoanModel.fromJson(Map<String, dynamic> json) =>
+      _$ApproveLoanModelFromJson(json);
 }
-

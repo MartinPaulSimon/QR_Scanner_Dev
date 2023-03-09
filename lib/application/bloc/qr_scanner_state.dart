@@ -27,6 +27,12 @@ class QrScannerState with _$QrScannerState {
     required Option<Either<QrScannerFailure, CreateLoanModel>>
         getCreateLoanFailureOrSuccess,
     CreateLoanModel? createLoanModel,
+
+    // --------- approveLoan ---------------
+    // required TextEditingController otpController,
+    required Option<Either<QrScannerFailure, ApproveLoanModel>>
+        getApproveLoanFailureOrSuccess,
+    ApproveLoanModel? approveLoanModel,
   }) = _QrScannerState;
 
   // --------- Initial state -------------------
@@ -36,13 +42,15 @@ class QrScannerState with _$QrScannerState {
       getScannedDetails: '',
       merchantAccount: '',
       customerAccount: '',
-      date: '',
+      date: DateTime.now().toString(),
       txnId: '',
       otpMobileNumber: '',
       amountController: TextEditingController(),
+      // otpController: TextEditingController(),
       getCreateTxnFailureOrSuccess: none(),
       getCreditFailureOrSuccess: none(),
       getCreateLoanFailureOrSuccess: none(),
+      getApproveLoanFailureOrSuccess: none(),
       // creditApproved: 0,
       creditAvailable: '',
       isLoading: false,
