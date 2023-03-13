@@ -40,6 +40,7 @@ dependencies:
   google_fonts: ^3.0.0
   http: ^0.13.5
   injectable: ^1.5.3
+  intl: ^0.18.0
   json_annotation: ^4.4.0
   json_serializable: ^6.1.5
   neumorphic_button: ^0.0.1+2

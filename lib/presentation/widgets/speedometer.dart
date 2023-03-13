@@ -17,13 +17,7 @@ class SpeedoMeterWidget extends StatelessWidget {
       // width: 250,
       height: 200,
       child: BlocConsumer<QrScannerBloc, QrScannerState>(
-        listener: (context, state) {
-          // context
-          //     .read<QrScannerBloc>()
-          //     .add(const QrScannerEvent.getCreditDetails(
-          //         //   creditApproved: state.creditApproved
-          //         ));
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return SfRadialGauge(
             enableLoadingAnimation: true,
@@ -101,6 +95,5 @@ class SpeedoMeterWidget extends StatelessWidget {
         },
       ),
     );
-    // : TextButton(onPressed: (){}, child: Text('Retry',));
   }
 }

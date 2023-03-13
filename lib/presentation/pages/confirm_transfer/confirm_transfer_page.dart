@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:intl/intl.dart';
 import 'package:qr_scanner_prj/core/colors.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 import 'package:qr_scanner_prj/presentation/pages/otp_verification/otp_verification_page.dart';
@@ -66,6 +67,7 @@ class ConfirmTransferPage extends StatelessWidget {
                 //------------CompanyDetails---------
                 BlocBuilder<QrScannerBloc, QrScannerState>(
                   builder: (context, state) {
+                    String date = DateFormat.yMMMMd().format(DateTime.now());
                     return Column(
                       children: [
                         Text(
@@ -97,7 +99,7 @@ class ConfirmTransferPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Transfer on ${state.date}",
+                          "Transfer on $date",
                           // state.date,
                           // "Transfer on Mar 2, 2020",
                           style: const TextStyle(
@@ -121,12 +123,15 @@ class ConfirmTransferPage extends StatelessWidget {
                       return TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
-                          return null;
+                          if (value != "") {
+                            if (double.parse(value!) >
+                                double.parse(
+                                    state.getCreditModel!.creditAvailable)) {
+                              return "Amount limit exceeded!";
+                            }
+                          }
 
-                          // if (double.parse(value!) >
-                          //     double.parse(state.creditAvailable)) {
-                          //   return "Amount limit exceeded!";
-                          // }
+                          return null;
                           // return null;
                         },
                         onChanged: (value) {
@@ -134,12 +139,7 @@ class ConfirmTransferPage extends StatelessWidget {
                               .read<QrScannerBloc>()
                               .add(QrScannerEvent.storeAmount(amount: value));
                         },
-                        controller:
-                            //  controller,
-                            context
-                                .read<QrScannerBloc>()
-                                .state
-                                .amountController,
+                        controller: state.amountController,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -234,15 +234,16 @@ class ConfirmTransferPage extends StatelessWidget {
                                 state.getCreateTxnFailureOrSuccess.fold(
                                     () => {},
                                     (_) => {
-                                          // state.amountController.clear(),
-                                          // controller.clear(),
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const OtpVerificationPage(),
-                                            ),
-                                          )
+                                          if (double.parse(state.amount) != 0)
+                                            {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const OtpVerificationPage(),
+                                                ),
+                                              )
+                                            }
                                         });
                               },
                               builder: (context, state) {
@@ -263,15 +264,6 @@ class ConfirmTransferPage extends StatelessWidget {
                                             // state.merchantAccount,
                                             customerAccount:
                                                 "melvinsanthosh%40mafil"));
-                                    // state.createTranscationModel != null
-                                    //     ? Navigator.push(
-                                    //         context,
-                                    //         MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //               const OtpVerificationPage(),
-                                    //         ),
-                                    //       )
-                                    //     : print("ERROR");
                                   }),
                                   child: const Text(
                                     "Pay",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:qr_scanner_prj/core/colors.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 
@@ -21,6 +22,7 @@ class OtpVerificationPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       body: BlocBuilder<QrScannerBloc, QrScannerState>(
         builder: (context, state) {
+          String date = DateFormat.yMMMMd().format(DateTime.now());
           return ListView(
             children: [
               kHeight70,
@@ -30,8 +32,7 @@ class OtpVerificationPage extends StatelessWidget {
               ),
               kHeight30,
               commonTexts(
-                label:
-                    "₹ ${context.read<QrScannerBloc>().state.amountController.text}",
+                label: "₹ ${state.amountController.text}",
                 color: Colors.yellow,
                 fontSize: 22,
                 textAlign: TextAlign.center,
@@ -53,7 +54,7 @@ class OtpVerificationPage extends StatelessWidget {
               ),
               // kHeight10,
               commonTexts(
-                  label: "Transfer on ${state.date.trim()}",
+                  label: "Transfer on $date",
                   // .toString('mmm-dd-yyyy')",
                   color: Colors.orange,
                   fontSize: 16,
@@ -62,7 +63,7 @@ class OtpVerificationPage extends StatelessWidget {
               kHeight20,
               commonTexts(
                 label:
-                    "Transcation ID : \n ${context.read<QrScannerBloc>().state.createTranscationModel!.txnId.toString()}",
+                    "Transcation ID : \n ${state.createTranscationModel!.txnId.toString()}",
                 // context
                 //     .read<QrScannerBloc>()
                 //     .state
@@ -91,16 +92,18 @@ class OtpVerificationPage extends StatelessWidget {
               BlocListener<QrScannerBloc, QrScannerState>(
                 listener: (context, state) {
                   state.getApproveLoanFailureOrSuccess.fold(
-                      () => {},
-                      (_) => {
-                            //  Navigator.pushAndRemoveUntil<void>(
-                            //   MaterialPageRoute<void>(builder: (BuildContext (context) => const ConfirmMsgPage())),
-                            //  ),
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ConfirmMsgPage(),
-                                )),
+                      () {},
+                      (a) => {
+                            a.fold((l) {}, (r) {
+                              if (state.approveLoanModel!.status == 2) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ConfirmMsgPage(),
+                                    ));
+                              }
+                            })
                           });
                 },
                 child: CommonNeumorphicButton(
@@ -109,9 +112,7 @@ class OtpVerificationPage extends StatelessWidget {
                     context.read<QrScannerBloc>().add(
                           QrScannerEvent.approveLoanWithOtp(
                               txnId: state.txnId,
-                              otp:
-                                  // otpController.text.isNotEmpty?
-                                  int.parse(otpController.text)),
+                              otp: int.parse(otpController.text)),
                         );
                   }),
                 ),

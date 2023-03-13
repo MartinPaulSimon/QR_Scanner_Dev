@@ -65,6 +65,10 @@ class _$QrScannerEventTearOff {
       amount: amount,
     );
   }
+
+  _ResetPage resetPage() {
+    return const _ResetPage();
+  }
 }
 
 /// @nodoc
@@ -83,6 +87,7 @@ mixin _$QrScannerEvent {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +101,7 @@ mixin _$QrScannerEvent {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -109,6 +115,7 @@ mixin _$QrScannerEvent {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +128,7 @@ mixin _$QrScannerEvent {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -132,6 +140,7 @@ mixin _$QrScannerEvent {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -143,6 +152,7 @@ mixin _$QrScannerEvent {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -212,6 +222,7 @@ class _$_Started implements _Started {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) {
     return started();
   }
@@ -228,6 +239,7 @@ class _$_Started implements _Started {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) {
     return started?.call();
   }
@@ -244,6 +256,7 @@ class _$_Started implements _Started {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -262,6 +275,7 @@ class _$_Started implements _Started {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) {
     return started(this);
   }
@@ -276,6 +290,7 @@ class _$_Started implements _Started {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) {
     return started?.call(this);
   }
@@ -290,6 +305,7 @@ class _$_Started implements _Started {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -391,6 +407,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) {
     return getQrScannedDeatils(merchantAccount, customerAccount);
   }
@@ -407,6 +424,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) {
     return getQrScannedDeatils?.call(merchantAccount, customerAccount);
   }
@@ -423,6 +441,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) {
     if (getQrScannedDeatils != null) {
@@ -441,6 +460,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) {
     return getQrScannedDeatils(this);
   }
@@ -455,6 +475,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) {
     return getQrScannedDeatils?.call(this);
   }
@@ -469,6 +490,7 @@ class _$_GetQrScannedDeatils implements _GetQrScannedDeatils {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) {
     if (getQrScannedDeatils != null) {
@@ -564,6 +586,7 @@ class _$_GetCreditDetails implements _GetCreditDetails {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) {
     return getCreditDetails(txnNo);
   }
@@ -580,6 +603,7 @@ class _$_GetCreditDetails implements _GetCreditDetails {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) {
     return getCreditDetails?.call(txnNo);
   }
@@ -596,6 +620,7 @@ class _$_GetCreditDetails implements _GetCreditDetails {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) {
     if (getCreditDetails != null) {
@@ -614,6 +639,7 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) {
     return getCreditDetails(this);
   }
@@ -628,6 +654,7 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) {
     return getCreditDetails?.call(this);
   }
@@ -642,6 +669,7 @@ class _$_GetCreditDetails implements _GetCreditDetails {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) {
     if (getCreditDetails != null) {
@@ -745,6 +773,7 @@ class _$_IsPaymentEligible implements _IsPaymentEligible {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) {
     return isPaymentEligible(amount, txnId);
   }
@@ -761,6 +790,7 @@ class _$_IsPaymentEligible implements _IsPaymentEligible {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) {
     return isPaymentEligible?.call(amount, txnId);
   }
@@ -777,6 +807,7 @@ class _$_IsPaymentEligible implements _IsPaymentEligible {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) {
     if (isPaymentEligible != null) {
@@ -795,6 +826,7 @@ class _$_IsPaymentEligible implements _IsPaymentEligible {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) {
     return isPaymentEligible(this);
   }
@@ -809,6 +841,7 @@ class _$_IsPaymentEligible implements _IsPaymentEligible {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) {
     return isPaymentEligible?.call(this);
   }
@@ -823,6 +856,7 @@ class _$_IsPaymentEligible implements _IsPaymentEligible {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) {
     if (isPaymentEligible != null) {
@@ -930,6 +964,7 @@ class _$_OtpVerification implements _OtpVerification {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) {
     return otpVerification(merchantAccount, customerAccount);
   }
@@ -946,6 +981,7 @@ class _$_OtpVerification implements _OtpVerification {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) {
     return otpVerification?.call(merchantAccount, customerAccount);
   }
@@ -962,6 +998,7 @@ class _$_OtpVerification implements _OtpVerification {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) {
     if (otpVerification != null) {
@@ -980,6 +1017,7 @@ class _$_OtpVerification implements _OtpVerification {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) {
     return otpVerification(this);
   }
@@ -994,6 +1032,7 @@ class _$_OtpVerification implements _OtpVerification {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) {
     return otpVerification?.call(this);
   }
@@ -1008,6 +1047,7 @@ class _$_OtpVerification implements _OtpVerification {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) {
     if (otpVerification != null) {
@@ -1113,6 +1153,7 @@ class _$_ApproveLoanWithOtp implements _ApproveLoanWithOtp {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) {
     return approveLoanWithOtp(txnId, otp);
   }
@@ -1129,6 +1170,7 @@ class _$_ApproveLoanWithOtp implements _ApproveLoanWithOtp {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) {
     return approveLoanWithOtp?.call(txnId, otp);
   }
@@ -1145,6 +1187,7 @@ class _$_ApproveLoanWithOtp implements _ApproveLoanWithOtp {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) {
     if (approveLoanWithOtp != null) {
@@ -1163,6 +1206,7 @@ class _$_ApproveLoanWithOtp implements _ApproveLoanWithOtp {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) {
     return approveLoanWithOtp(this);
   }
@@ -1177,6 +1221,7 @@ class _$_ApproveLoanWithOtp implements _ApproveLoanWithOtp {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) {
     return approveLoanWithOtp?.call(this);
   }
@@ -1191,6 +1236,7 @@ class _$_ApproveLoanWithOtp implements _ApproveLoanWithOtp {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) {
     if (approveLoanWithOtp != null) {
@@ -1285,6 +1331,7 @@ class _$_StoreAmount implements _StoreAmount {
         otpVerification,
     required TResult Function(String txnId, int otp) approveLoanWithOtp,
     required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
   }) {
     return storeAmount(amount);
   }
@@ -1301,6 +1348,7 @@ class _$_StoreAmount implements _StoreAmount {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
   }) {
     return storeAmount?.call(amount);
   }
@@ -1317,6 +1365,7 @@ class _$_StoreAmount implements _StoreAmount {
         otpVerification,
     TResult Function(String txnId, int otp)? approveLoanWithOtp,
     TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
     required TResult orElse(),
   }) {
     if (storeAmount != null) {
@@ -1335,6 +1384,7 @@ class _$_StoreAmount implements _StoreAmount {
     required TResult Function(_OtpVerification value) otpVerification,
     required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
     required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
   }) {
     return storeAmount(this);
   }
@@ -1349,6 +1399,7 @@ class _$_StoreAmount implements _StoreAmount {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
   }) {
     return storeAmount?.call(this);
   }
@@ -1363,6 +1414,7 @@ class _$_StoreAmount implements _StoreAmount {
     TResult Function(_OtpVerification value)? otpVerification,
     TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
     TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
     required TResult orElse(),
   }) {
     if (storeAmount != null) {
@@ -1379,6 +1431,151 @@ abstract class _StoreAmount implements QrScannerEvent {
   @JsonKey(ignore: true)
   _$StoreAmountCopyWith<_StoreAmount> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ResetPageCopyWith<$Res> {
+  factory _$ResetPageCopyWith(
+          _ResetPage value, $Res Function(_ResetPage) then) =
+      __$ResetPageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetPageCopyWithImpl<$Res> extends _$QrScannerEventCopyWithImpl<$Res>
+    implements _$ResetPageCopyWith<$Res> {
+  __$ResetPageCopyWithImpl(_ResetPage _value, $Res Function(_ResetPage) _then)
+      : super(_value, (v) => _then(v as _ResetPage));
+
+  @override
+  _ResetPage get _value => super._value as _ResetPage;
+}
+
+/// @nodoc
+
+class _$_ResetPage implements _ResetPage {
+  const _$_ResetPage();
+
+  @override
+  String toString() {
+    return 'QrScannerEvent.resetPage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ResetPage);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String merchantAccount, String customerAccount)
+        getQrScannedDeatils,
+    required TResult Function(String txnNo) getCreditDetails,
+    required TResult Function(double amount, String txnId) isPaymentEligible,
+    required TResult Function(String merchantAccount, String customerAccount)
+        otpVerification,
+    required TResult Function(String txnId, int otp) approveLoanWithOtp,
+    required TResult Function(String amount) storeAmount,
+    required TResult Function() resetPage,
+  }) {
+    return resetPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+    TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
+  }) {
+    return resetPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String merchantAccount, String customerAccount)?
+        getQrScannedDeatils,
+    TResult Function(String txnNo)? getCreditDetails,
+    TResult Function(double amount, String txnId)? isPaymentEligible,
+    TResult Function(String merchantAccount, String customerAccount)?
+        otpVerification,
+    TResult Function(String txnId, int otp)? approveLoanWithOtp,
+    TResult Function(String amount)? storeAmount,
+    TResult Function()? resetPage,
+    required TResult orElse(),
+  }) {
+    if (resetPage != null) {
+      return resetPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetQrScannedDeatils value) getQrScannedDeatils,
+    required TResult Function(_GetCreditDetails value) getCreditDetails,
+    required TResult Function(_IsPaymentEligible value) isPaymentEligible,
+    required TResult Function(_OtpVerification value) otpVerification,
+    required TResult Function(_ApproveLoanWithOtp value) approveLoanWithOtp,
+    required TResult Function(_StoreAmount value) storeAmount,
+    required TResult Function(_ResetPage value) resetPage,
+  }) {
+    return resetPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+    TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
+  }) {
+    return resetPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetQrScannedDeatils value)? getQrScannedDeatils,
+    TResult Function(_GetCreditDetails value)? getCreditDetails,
+    TResult Function(_IsPaymentEligible value)? isPaymentEligible,
+    TResult Function(_OtpVerification value)? otpVerification,
+    TResult Function(_ApproveLoanWithOtp value)? approveLoanWithOtp,
+    TResult Function(_StoreAmount value)? storeAmount,
+    TResult Function(_ResetPage value)? resetPage,
+    required TResult orElse(),
+  }) {
+    if (resetPage != null) {
+      return resetPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetPage implements QrScannerEvent {
+  const factory _ResetPage() = _$_ResetPage;
 }
 
 /// @nodoc

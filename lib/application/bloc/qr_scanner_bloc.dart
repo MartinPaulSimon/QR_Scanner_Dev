@@ -149,13 +149,38 @@ class QrScannerBloc extends Bloc<QrScannerEvent, QrScannerState> {
 
     // -------------- speedometer knob controlling event -------------
     on<_StoreAmount>((event, emit) {
+      String? amt = "0";
+      if (double.parse(event.amount) <=
+          double.parse(state.getCreditModel!.creditAvailable)) {
+        amt = event.amount;
+      }
       emit(state.copyWith(
-        amount: event.amount,
+        amount: amt,
         isAmountEntered: true,
         getCreditFailureOrSuccess: none(),
         getCreateTxnFailureOrSuccess: none(),
         getCreateLoanFailureOrSuccess: none(),
         getApproveLoanFailureOrSuccess: none(),
+      ));
+    });
+
+    on<_ResetPage>((event, emit) {
+      emit(state.copyWith(
+        getScannedDetails: '',
+        merchantAccount: '',
+        customerAccount: '',
+        txnId: '',
+        otpMobileNumber: '',
+        amount: '',
+        approveLoanModel: const ApproveLoanModel(status: 0, loanNo: ""),
+        amountController: TextEditingController(),
+        getCreateTxnFailureOrSuccess: none(),
+        getCreditFailureOrSuccess: none(),
+        getCreateLoanFailureOrSuccess: none(),
+        getApproveLoanFailureOrSuccess: none(),
+        creditAvailable: '0',
+        isLoading: false,
+        isAmountEntered: false,
       ));
     });
   }

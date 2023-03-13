@@ -55,7 +55,7 @@ class QrScannerState with _$QrScannerState {
       getCreateLoanFailureOrSuccess: none(),
       getApproveLoanFailureOrSuccess: none(),
       // creditApproved: 0,
-      creditAvailable: '',
+      creditAvailable: '0',
       isLoading: false,
       isAmountEntered: false,
     );

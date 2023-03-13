@@ -30,4 +30,6 @@ class QrScannerEvent with _$QrScannerEvent {
   const factory QrScannerEvent.storeAmount({
     required String amount,
   }) = _StoreAmount;
+
+  const factory QrScannerEvent.resetPage() = _ResetPage;
 }

@@ -33,7 +33,7 @@ class ConfirmMsgPage extends StatelessWidget {
               commonTexts(
                 label: "Wohoo!",
                 color: const Color.fromARGB(234, 142, 254, 14),
-                fontSize: 22,
+                fontSize: 32,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.bold,
               ),
@@ -43,7 +43,7 @@ class ConfirmMsgPage extends StatelessWidget {
                 label: "Your purchase is  \n successfully completed.",
                 // \n A receipt for this purchase\n has been sent \n to your email.",
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 22,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w500,
               ),
@@ -52,19 +52,25 @@ class ConfirmMsgPage extends StatelessWidget {
                   label:
                       "Loan Number is : \n ${state.approveLoanModel!.loanNo}",
                   color: Colors.blueAccent,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
                   textAlign: TextAlign.center),
               kHeight120,
               //----------- Okay button ---------------
               CommonNeumorphicButton(
                 label: "Okay",
-                onTap: (() => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const QRScannerPage(),
-                      ),
-                    )),
+                onTap: (() {
+                  state.amountController.clear();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const QRScannerPage(),
+                    ),
+                  );
+                  context
+                      .read<QrScannerBloc>()
+                      .add(const QrScannerEvent.resetPage());
+                }),
               ),
             ],
           );

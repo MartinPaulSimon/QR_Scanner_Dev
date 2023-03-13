@@ -3,7 +3,7 @@
     package="com.example.qr_scanner_prj">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="qr_scanner_prj"
+        android:label="MaCred"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
