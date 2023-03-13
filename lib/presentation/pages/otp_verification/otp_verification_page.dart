@@ -88,23 +88,33 @@ class OtpVerificationPage extends StatelessWidget {
               kHeight50,
 
               //------------ Confirm OTP Button ---------------
-              CommonNeumorphicButton(
-                label: "Confirm OTP",
-                onTap: (() {
-                  context.read<QrScannerBloc>().add(
-                        QrScannerEvent.approveLoanWithOtp(
-                            txnId: state.txnId,
-                            otp:
-                                // otpController.text.isNotEmpty?
-                                int.parse(otpController.text)),
-                      );
-
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ConfirmMsgPage(),
-                      ));
-                }),
+              BlocListener<QrScannerBloc, QrScannerState>(
+                listener: (context, state) {
+                  state.getApproveLoanFailureOrSuccess.fold(
+                      () => {},
+                      (_) => {
+                            //  Navigator.pushAndRemoveUntil<void>(
+                            //   MaterialPageRoute<void>(builder: (BuildContext (context) => const ConfirmMsgPage())),
+                            //  ),
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ConfirmMsgPage(),
+                                )),
+                          });
+                },
+                child: CommonNeumorphicButton(
+                  label: "Confirm OTP",
+                  onTap: (() {
+                    context.read<QrScannerBloc>().add(
+                          QrScannerEvent.approveLoanWithOtp(
+                              txnId: state.txnId,
+                              otp:
+                                  // otpController.text.isNotEmpty?
+                                  int.parse(otpController.text)),
+                        );
+                  }),
+                ),
               ),
             ],
           );

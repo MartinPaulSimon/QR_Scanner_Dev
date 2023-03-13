@@ -19,6 +19,8 @@ class QrScannerState with _$QrScannerState {
     required String creditAvailable,
     required String txnId,
     required bool isLoading,
+    required String amount,
+    required bool isAmountEntered,
     required Option<Either<QrScannerFailure, GetCreditModel>>
         getCreditFailureOrSuccess,
     GetCreditModel? getCreditModel,
@@ -45,6 +47,7 @@ class QrScannerState with _$QrScannerState {
       date: DateTime.now().toString(),
       txnId: '',
       otpMobileNumber: '',
+      amount: '',
       amountController: TextEditingController(),
       // otpController: TextEditingController(),
       getCreateTxnFailureOrSuccess: none(),
@@ -54,6 +57,7 @@ class QrScannerState with _$QrScannerState {
       // creditApproved: 0,
       creditAvailable: '',
       isLoading: false,
+      isAmountEntered: false,
     );
   }
 }

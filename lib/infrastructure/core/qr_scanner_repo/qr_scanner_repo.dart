@@ -47,6 +47,7 @@ class QrScannerRepo implements IQrScannerRepo {
       };
 
       final uri = Uri.http(authority, "api/approveloan", parameters);
+      print(uri);
       final response = await http.Client().get(uri);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final models = jsonDecode(response.body);

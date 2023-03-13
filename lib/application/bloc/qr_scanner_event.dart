@@ -26,4 +26,8 @@ class QrScannerEvent with _$QrScannerEvent {
     required String txnId,
     required int otp,
   }) = _ApproveLoanWithOtp;
+
+  const factory QrScannerEvent.storeAmount({
+    required String amount,
+  }) = _StoreAmount;
 }

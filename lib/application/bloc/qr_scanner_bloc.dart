@@ -146,5 +146,17 @@ class QrScannerBloc extends Bloc<QrScannerEvent, QrScannerState> {
                 approveLoanModel: success,
               )));
     });
+
+    // -------------- speedometer knob controlling event -------------
+    on<_StoreAmount>((event, emit) {
+      emit(state.copyWith(
+        amount: event.amount,
+        isAmountEntered: true,
+        getCreditFailureOrSuccess: none(),
+        getCreateTxnFailureOrSuccess: none(),
+        getCreateLoanFailureOrSuccess: none(),
+        getApproveLoanFailureOrSuccess: none(),
+      ));
+    });
   }
 }
