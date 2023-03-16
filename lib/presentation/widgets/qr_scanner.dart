@@ -67,6 +67,8 @@ class QRCodeReader extends StatelessWidget {
           .replaceAll('"', "")
           .replaceAll('}', "");
 
+      log(merchant);
+
       onChanged(merchant, address);
 
       // if (getResult) {

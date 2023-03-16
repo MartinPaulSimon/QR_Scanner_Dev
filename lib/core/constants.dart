@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+//*Duration
+const Duration kDuration1 = Duration(seconds: 1);
+const Duration kDuration2 = Duration(seconds: 2);
+const Duration kDuration3 = Duration(seconds: 3);
+const Duration kDuration5 = Duration(seconds: 5);
+
 //*SizedBox
 //*width
 const kWidth1 = SizedBox(width: 1);
