@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:qr_scanner_prj/application/bloc/qr_scanner_bloc.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 
@@ -21,14 +22,28 @@ class ConfirmMsgPage extends StatelessWidget {
             children: [
               //---------Back button----------
 
-              kHeight90,
+              kHeight20,
 
               //--------Success Bulb Image ----------
-              Image.asset(
-                "assets/images/successbulb.png",
-                height: 100,
+              Lottie.network(
+                'https://assets3.lottiefiles.com/packages/lf20_fbwbq3um.json',
+                height: 250,
+                fit: BoxFit.contain,
               ),
-              kHeight30,
+              // Lottie.asset(
+              //   'assets/images/success-popup.json',
+              //   fit: BoxFit.fitWidth,
+              //   repeat: true,
+              //   alignment: Alignment.topCenter,
+              //   height: 30,
+              //   // width: 30
+              // ),
+
+              // Image.asset(
+              //   "assets/images/successbulb.png",
+              //   height: 100,
+              // ),
+              // kHeight80,
               //---------- Wohoo! text --------------
               commonTexts(
                 label: "Wohoo!",
@@ -37,7 +52,7 @@ class ConfirmMsgPage extends StatelessWidget {
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.bold,
               ),
-              kHeight120,
+              kHeight70,
               //----------- Success Message -----------
               commonTexts(
                 label: "Your purchase is  \n successfully completed.",

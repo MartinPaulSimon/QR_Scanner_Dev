@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:qr_scanner_prj/core/colors.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 
@@ -26,10 +27,37 @@ class OtpVerificationPage extends StatelessWidget {
           return ListView(
             children: [
               kHeight70,
-              Image.asset(
-                "assets/images/otpimage.png",
-                height: 100,
+
+              //------Otp lottie--------
+
+              // Container(
+              //   padding: const EdgeInsets.all(20),
+              //   height: 100,
+              //   width: 30,
+              //   decoration: BoxDecoration(
+              //     borderRadius: const BorderRadius.all(Radius.circular(50)
+              //         // topRight: Radius.circular(40),
+              //         ),
+              //     border: Border.all(
+              //       width: 3,
+              //       color: Colors.green,
+              //       style: BorderStyle.solid,
+              //     ),
+              //   ),
+              // ),
+
+              // kHeight30,
+
+              Lottie.asset(
+                'assets/images/message-icon-animation.json',
+                alignment: Alignment.topCenter,
+                height: 150,
               ),
+
+              // Image.asset(
+              //   "assets/images/otpimage.png",
+              //   height: 100,
+              // ),
               kHeight30,
               commonTexts(
                 label: "₹ ${state.amountController.text}",

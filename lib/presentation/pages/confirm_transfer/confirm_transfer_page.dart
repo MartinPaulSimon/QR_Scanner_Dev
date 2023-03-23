@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:qr_scanner_prj/core/colors.dart';
 import 'package:qr_scanner_prj/core/constants.dart';
 import 'package:qr_scanner_prj/presentation/pages/otp_verification/otp_verification_page.dart';
@@ -56,12 +57,19 @@ class ConfirmTransferPage extends StatelessWidget {
           builder: (context, state) {
             return ListView(
               children: [
-                kHeight20,
+                // kHeight20,
                 //Cash Icon, Merchant bank details, etc
-                Image.asset(
-                  "assets/images/money.png",
-                  height: 100,
+
+                Lottie.network(
+                  'https://assets9.lottiefiles.com/packages/lf20_jOH2sn.json',
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.topCenter,
+                  height: 150,
                 ),
+                // Image.asset(
+                //   "assets/images/money.png",
+                //   height: 100,
+                // ),
 
                 kHeight30,
                 //------------CompanyDetails---------

@@ -134,3 +134,12 @@ class SplashPage extends StatelessWidget {
     );
   }
 }
+
+
+//adding lottie animation in dart?
+
+
+
+
+
+

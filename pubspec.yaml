@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.18.0
   json_annotation: ^4.4.0
   json_serializable: ^6.1.5
+  lottie: ^1.4.2
   neumorphic_button: ^0.0.1+2
   pinput: ^2.2.21
   syncfusion_flutter_gauges: ^20.4.50
