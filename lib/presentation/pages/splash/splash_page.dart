@@ -118,7 +118,7 @@ class SplashPage extends StatelessWidget {
                   'MACOM',
                   style: GoogleFonts.fredoka(
                     color: const Color.fromRGBO(114, 189, 102, 100),
-                    fontSize: 12,
+                    fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
